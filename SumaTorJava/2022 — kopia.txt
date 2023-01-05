@@ -1,0 +1,4 @@
+Imię; Liczba punktów; Liczba użytych Jokerów
+Andrzej; 79; 0
+Filip; 71; 0
+Mikolaj; 64; 0
