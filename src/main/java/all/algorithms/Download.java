@@ -27,15 +27,14 @@ public class Download {
             br.close();
         }
         catch (FileNotFoundException ex){
-            System.out.println("Nie mozna bylo odczytac pliku");
+//            System.out.println("Nie mozna bylo odczytac pliku");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return quoteArrayList;
     }
 
-    //nie pobiera sie Latifi bo e jest empty po pobraniu ostatniej danej i pomija dodanie do arraya
-    public ArrayList<Driver> downloadScoresFromQuali(String link) throws IOException{
+    public ArrayList<Driver> downloadScoresFromQualiOrSS(String link) throws IOException{
         ArrayList<Driver> lifeScores = new ArrayList<>();
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
@@ -44,15 +43,29 @@ public class Download {
 
         for (Element e : elements) { //do testowania
             if(!e.text().isEmpty()){
-                System.out.println(e.text());
+//                System.out.println(e.text());
             }
         }
 
         int i=1;
+
+        boolean stop=false;
+        boolean times=false;
+
         for (Element e: elements) {
+
             if(!e.text().isEmpty()){
                 stuff.add(e.text());
-                if(stuff.size()==8 && i<=10){ //top 10 ma 8 danych, 10-15 7 danych, 15-20 6 danych
+
+                if(e.text().contains(":")){
+                    times=true;
+                }
+
+                if(!e.text().contains(":") && times){
+                    stop=true;
+                }
+
+                if(stuff.size()==8 && stop){ //top 10 ma 8 danych, 10-15 7 danych, 15-20 6 danych
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
                     if(parts[1].equals("Guanyu")) parts[1]="Zhou";
@@ -61,10 +74,12 @@ public class Download {
                     i++;
                     lifeScores.add(driver);
                     stuff.clear();
+                    stop=false;
+                    times=false;
 //                    stuff.add(e.text());
                 }
 
-                else if(stuff.size()==7 && i>10 && i<=15){
+                else if(stuff.size()==7 && stop){
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
                     if(parts[1].equals("Guanyu")) parts[1]="Zhou";
@@ -73,9 +88,11 @@ public class Download {
                     i++;
                     lifeScores.add(driver);
                     stuff.clear();
+                    stop=false;
+                    times=false;
                 }
 
-                else if(stuff.size()==6 && i>15 && i<=20){
+                else if(stuff.size()==6 && stop){
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
                     if(parts[1].equals("Guanyu")) parts[1]="Zhou";
@@ -84,6 +101,8 @@ public class Download {
                     i++;
                     lifeScores.add(driver);
                     stuff.clear();
+                    stop=false;
+                    times=false;
                 }
             }
 
@@ -92,7 +111,7 @@ public class Download {
         return lifeScores;
     }
 
-    public ArrayList<Driver> downloadScoresFromRace(String link) throws IOException { //pobieranie wyników ze strony f1
+    public ArrayList<Driver> downloadScoresFromRaceOrSprint(String link) throws IOException { //pobieranie wyników ze strony f1
         ArrayList<Driver> lifeScores = new ArrayList<>();
 
         Document doc = Jsoup.connect(link).timeout(6000).get();
@@ -102,7 +121,7 @@ public class Download {
 
         for (Element e : elements) { //do testowania
             if(!e.text().isEmpty()){
-                System.out.println(e.text());
+//                System.out.println(e.text());
             }
         }
 
@@ -116,8 +135,8 @@ public class Download {
                     if(parts[1].equals("Guanyu")) parts[1]="Zhou";
                     Driver driver = new Driver(i,Integer.parseInt(stuff.get(1)),parts[1],stuff.get(3),
                             Integer.parseInt(stuff.get(4)),stuff.get(5),Integer.parseInt(stuff.get(6)));
-                    System.out.println(driver.getPosition()+" "+driver.getNumber()+" "+driver.getName()+" "
-                            +driver.getTeam()+" "+driver.getDrivenLaps()+" "+driver.getLose()+" "+driver.getPoints());
+//                    System.out.println(driver.getPosition()+" "+driver.getNumber()+" "+driver.getName()+" "
+//                            +driver.getTeam()+" "+driver.getDrivenLaps()+" "+driver.getLose()+" "+driver.getPoints());
                     i++;
                     lifeScores.add(driver);
                     stuff.clear();

@@ -61,6 +61,18 @@ public class Driver {
         this.drivenLaps=drivenLaps;
     }
 
+    //DNS
+    public Driver(int position, int number, String name, String team, int drivenLaps){
+        this.position=position;
+        this.number=number;
+        this.name=name;
+        this.team=team;
+        this.time1=time1;
+        this.time2=time2;
+        this.time3=time3;
+        this.drivenLaps=drivenLaps;
+    }
+
     public int getPosition() {
         return position;
     }
