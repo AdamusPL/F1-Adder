@@ -165,6 +165,18 @@ public class Download {
         return null;
     }
 
+    void changeLanguage(String name){
+        name=name.replace("ą","a");
+        name=name.replace("ć","c");
+        name=name.replace("ę","e");
+        name=name.replace("ł","l");
+        name=name.replace("ń","n");
+        name=name.replace("ó","o");
+        name=name.replace("ś","s");
+        name=name.replace("ź","z");
+        name=name.replace("ż","z");
+    }
+
     public ArrayList<Participant> downloadParticipants() throws IOException { //metoda pobierająca arraylistę uczestników
         ArrayList<Participant> participantArrayList=new ArrayList<>();
         Document doc = Jsoup.connect("https://sites.google.com/view/typerf1/klasyfikacja?authuser=0").timeout(6000).get();
@@ -177,7 +189,9 @@ public class Download {
                 String string = e.text();
                 String[] parts = string.split(" ");
                 String name = parts[0];
+                changeLanguage(name);
                 String surname = parts[1];
+                changeLanguage(surname);
                 String points = parts[2];
 
                 int i=4;

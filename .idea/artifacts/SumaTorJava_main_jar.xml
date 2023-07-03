@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SumaTorJava.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SumaTorJava_main_jar</output-path>
+    <root id="archive" name="SumaTorJava.main.jar">
+      <element id="module-output" name="SumaTorJava.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.15.3/f6e1d8a8819f854b681c8eaa57fd59a42329e10c/jsoup-1.15.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

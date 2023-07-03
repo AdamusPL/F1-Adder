@@ -44,6 +44,8 @@ public class Frame extends JFrame {
                 try {
                     Frame frame = new Frame();
                     frame.setVisible(true);
+//                    Sound sound = new Sound();
+//                    sound.playSound("f1theme.wav");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -58,6 +60,7 @@ public class Frame extends JFrame {
     ArrayList<Driver> driversArrayList = null;
     String fastestDriver = null;
     ArrayList<Link> links;
+    ArrayList<Link> linksFL;
 
 
     /**
@@ -185,6 +188,8 @@ public class Frame extends JFrame {
         contentPane.add(participantC, gbc_participantC);
 
         Choice qualiorrace = new Choice();
+        qualiorrace.add("Rzut sprinterski");
+        qualiorrace.add("Sprint");
         qualiorrace.add("Kwalifikacje");
         qualiorrace.add("Wyscig");
 
@@ -213,16 +218,25 @@ public class Frame extends JFrame {
 
         contentPane.add(race, gbc_race);
 
-        JButton load = new JButton("Załaduj");
+        JButton load = new JButton("Zaladuj");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==load){
                     if(qualiorrace.getSelectedItem().equals("Kwalifikacje")){
-                        links = add.addQuali();
+                        links = add.add("2023_q.txt");
                     }
 
-                    else{
-                        links = add.addRaces();
+                    else if(qualiorrace.getSelectedItem().equals("Wyscig")){
+                        links = add.add("2023_r.txt");
+                        linksFL = add.add("2023_fl.txt");
+                    }
+
+                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
+                        links = add.add("2023_s.txt");
+                    }
+
+                    else{ //rzut sprinterski
+                        links = add.add("2023_ss.txt");
                     }
 
                     for (Link link : links) {
@@ -259,16 +273,37 @@ public class Frame extends JFrame {
                         }
                     }
 
+                    String fastestlap="";
+
+                    int counter=0;
+
+                    for(int i=0; i<whichrace.length(); i++){
+                        if(whichrace.charAt(i)=='.'){
+                            if(whichrace.charAt(i+1)=='h') {
+                                counter++;
+                            }
+                        }
+
+                        if(counter==2){
+                            break;
+                        }
+
+                        fastestlap+=whichrace.charAt(i);
+
+                    }
+
+                    fastestlap+="/fastest-laps.html";
+
                     if(qualiorrace.getSelectedItem().equals("Wyscig")) {
                         try {
-                            fastestDriver = download.downloadFastestLap(whichrace);
+                            fastestDriver = download.downloadFastestLap(fastestlap);
                         } catch (IOException e2) {
                             // TODO Auto-generated catch block
                             e2.printStackTrace();
                         }
 
                         try {
-                            driversArrayList = download.downloadScoresFromRace(whichrace);
+                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -285,9 +320,9 @@ public class Frame extends JFrame {
                         countPointsAlgorithm.countRace(bets, driversArrayList, chosen, fastestDriver);
                     }
 
-                    else {
+                    else if(qualiorrace.getSelectedItem().equals("Kwalifikacje")) {
                         try {
-                            driversArrayList = download.downloadScoresFromQuali(whichrace);
+                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -304,6 +339,45 @@ public class Frame extends JFrame {
                         countPointsAlgorithm.countQuali(bets, driversArrayList, chosen);
 
                     }
+
+                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
+                        try {
+                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+
+                        Participant chosen = null;
+                        for (Participant participant : participantArrayList) {
+                            if (participantC.getSelectedItem().equals(participant.getName())) {
+                                chosen = participant;
+                            }
+                        }
+
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
+                        countPointsAlgorithm.countSprint(bets, driversArrayList, chosen);
+                    }
+
+                    else{ //Sprint Shootout
+                        try {
+                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+
+                        Participant chosen = null;
+                        for (Participant participant : participantArrayList) {
+                            if (participantC.getSelectedItem().equals(participant.getName())) {
+                                chosen = participant;
+                            }
+                        }
+
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
+                        countPointsAlgorithm.countSprintShootout(bets, driversArrayList, chosen);
+                    }
+
                     String pointsString="<html>";
                     String jokersString="<html>";
                     for (Participant participant : participantArrayList) {
