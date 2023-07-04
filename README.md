@@ -8,3 +8,6 @@ To aplikacja sumująca punkty w lidze typowania wyników Formuły 1
 4. Wklejamy bety
 5. Naciskamy "OK"
 6. Punkty pojawiają się w kolumnie "Liczba zdobytych punktów"
+
+# Jakie biblioteki wykorzystuje?
+- JSoup - do pobrania wyników z oficjalnej strony F1
