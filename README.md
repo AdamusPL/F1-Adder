@@ -1,13 +1,14 @@
 # SumaTor
-To aplikacja sumująca punkty w lidze typowania wyników Formuły 1
+To aplikacja obliczająca sumę punktów za obstawienie wyników w lidze typowania wyników Formuły 1, działająca na zasadach ściśle określonych przez ligę
 
 # Jak ona działa?
-1. Na prawo wybieramy czy chcemy policzyć wyniki z "Rzutu sprinterskiego", "Sprintu", "Kwalifikacji" czy "Wyścigu" następnie klikamy przycisk "Zaladuj", który załaduje do programu bazę adresów URL z wynikami
-2. Na lewo wybieramy weekend wyścigowy
-3. Po środku wybieramy uczestnika betowania, dla którego chcemy policzyć tzw. punkty
-4. Wklejamy bety
-5. Naciskamy "OK"
-6. Punkty pojawiają się w kolumnie "Liczba zdobytych punktów"
+1. Na prawo wybieramy czy chcemy policzyć wyniki z "Rzutu sprinterskiego", "Sprintu", "Kwalifikacji" czy "Wyścigu"
+2. Klikamy przycisk "Zaladuj", który załaduje do programu bazę adresów URL z wynikami ze strony F1
+3. Na lewo wybieramy weekend wyścigowy (np. bahrain)
+4. Po środku wybieramy uczestnika ligi, dla którego chcemy policzyć punkty
+5. Wklejamy bety w pole tekstowe w odpowiednim formacie
+6. Naciskamy "OK"
+7. Obliczone punkty pojawią się w kolumnie "Liczba zdobytych punktów"
 
 # Jakie biblioteki wykorzystuje?
-- JSoup - do pobrania wyników z oficjalnej strony F1
+- JSoup - do pobrania wyników z oficjalnej strony F1 oraz aktualnego rankingu typowania ze ściśle określonej strony
