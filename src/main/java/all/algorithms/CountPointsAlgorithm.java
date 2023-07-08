@@ -11,10 +11,22 @@ import all.model.Participant;
 public class CountPointsAlgorithm {
     ArrayList<Bet> betsArray = new ArrayList<>();
 
-    public void countRace(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen, String fastestDriver){
+    public void countRace(String bets, ArrayList<Driver> driversArrayList, Participant chosen, String fastestDriver){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        //tu jeszcze pozmieniac!
+        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
+
+        //zamien zeby nie bylo \n na poczatku
+
+        String replace="";
+
+        for(int i=0; i<parts[0].length(); i++){
+            if(i>=1){
+                replace+=parts[0].charAt(i);
+            }
+        }
+
+        parts[0]=replace;
 
         int jokers=0;
         double points=0;
@@ -76,10 +88,10 @@ public class CountPointsAlgorithm {
         System.out.println();
     }
 
-    public void countQuali(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
+    public void countQuali(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        //tu pewnie cos nie zadziala jeszcze do konca z \n na poczatku
+        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
 
         int jokers=0;
         double points=0;
@@ -129,10 +141,9 @@ public class CountPointsAlgorithm {
         System.out.println(points);
     }
 
-    public void countSprint(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
+    public void countSprint(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
 
         int jokers=0;
         double points=0;
@@ -183,10 +194,9 @@ public class CountPointsAlgorithm {
         System.out.println();
     }
 
-    public void countSprintShootout(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
+    public void countSprintShootout(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String[] parts = bets.split("\n"); //podzial na pozycja+kierowca
 
         int jokers=0;
         double points=0;

@@ -8,10 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import all.algorithms.Add;
-import all.algorithms.CountPointsAlgorithm;
-import all.algorithms.Download;
-import all.algorithms.QuoteAlgorithm;
+import all.algorithms.*;
 import all.model.Driver;
 import all.model.Link;
 import all.model.Participant;
@@ -24,12 +21,9 @@ import java.awt.Insets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import java.awt.Choice;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
 
 public class Frame extends JFrame {
 
@@ -44,8 +38,7 @@ public class Frame extends JFrame {
                 try {
                     Frame frame = new Frame();
                     frame.setVisible(true);
-//                    Sound sound = new Sound();
-//                    sound.playSound("f1theme.wav");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -67,8 +60,12 @@ public class Frame extends JFrame {
      * Create the frame.
      * @throws IOException
      */
-    public Frame() throws IOException {
+    public Frame() throws Exception {
         ArrayList<Participant> participantArrayList = download.downloadParticipants();
+
+        ReceiveMail receiveMail = new ReceiveMail();
+
+        ArrayList<String> score = receiveMail.getBetsFromMail(participantArrayList);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -169,90 +166,6 @@ public class Frame extends JFrame {
         gbc_lblNewLabel_3.gridy = 5;
         contentPane.add(lblNewLabel_3, gbc_lblNewLabel_3);
 
-        Choice participantC = new Choice();
-        for (Participant participant : participantArrayList) {
-            participantC.add(participant.getName());
-        }
-
-        JLabel lblNewLabel_4 = new JLabel("Oblicz punkty dla:");
-        GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-        gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_4.gridx = 11;
-        gbc_lblNewLabel_4.gridy = 6;
-        contentPane.add(lblNewLabel_4, gbc_lblNewLabel_4);
-
-        GridBagConstraints gbc_participantC = new GridBagConstraints();
-        gbc_participantC.insets = new Insets(0, 0, 5, 5);
-        gbc_participantC.gridx = 12;
-        gbc_participantC.gridy = 6;
-        contentPane.add(participantC, gbc_participantC);
-
-        Choice qualiorrace = new Choice();
-        qualiorrace.add("Rzut sprinterski");
-        qualiorrace.add("Sprint");
-        qualiorrace.add("Kwalifikacje");
-        qualiorrace.add("Wyscig");
-
-        JScrollPane scrollPane = new JScrollPane();
-        GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-        gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
-        gbc_scrollPane.fill = GridBagConstraints.BOTH;
-        gbc_scrollPane.gridx = 12;
-        gbc_scrollPane.gridy = 7;
-        contentPane.add(scrollPane, gbc_scrollPane);
-
-        JTextArea bets = new JTextArea();
-        scrollPane.setViewportView(bets);
-        GridBagConstraints gbc_qualiorrace = new GridBagConstraints();
-        gbc_qualiorrace.insets = new Insets(0, 0, 5, 0);
-        gbc_qualiorrace.gridx = 13;
-        gbc_qualiorrace.gridy = 7;
-        contentPane.add(qualiorrace, gbc_qualiorrace);
-
-        Choice race = new Choice();
-
-        GridBagConstraints gbc_race = new GridBagConstraints();
-        gbc_race.insets = new Insets(0, 0, 5, 5);
-        gbc_race.gridx = 11;
-        gbc_race.gridy = 7;
-
-        contentPane.add(race, gbc_race);
-
-        JButton load = new JButton("Zaladuj");
-        load.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==load){
-                    if(qualiorrace.getSelectedItem().equals("Kwalifikacje")){
-                        links = add.add("2023_q.txt");
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Wyscig")){
-                        links = add.add("2023_r.txt");
-                        linksFL = add.add("2023_fl.txt");
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
-                        links = add.add("2023_s.txt");
-                    }
-
-                    else{ //rzut sprinterski
-                        links = add.add("2023_ss.txt");
-                    }
-
-                    for (Link link : links) {
-                        race.add(link.getName());
-                        contentPane.revalidate();
-                    }
-                }
-            }
-        });
-
-        GridBagConstraints gbc_load = new GridBagConstraints();
-        gbc_load.insets = new Insets(0, 0, 5, 0);
-        gbc_load.gridx = 13;
-        gbc_load.gridy = 8;
-        contentPane.add(load, gbc_load);
-
         JLabel lblNewLabel_5 = new JLabel("© DiXXo v.1.0 BETA, 2023");
         GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
         gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
@@ -260,122 +173,122 @@ public class Frame extends JFrame {
         gbc_lblNewLabel_5.gridy = 9;
         contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
+        JButton confirm = new JButton("Uaktualnij wyniki");
 
-
-        JButton confirm = new JButton("OK");
+        //dodac pobieranie wynikow z danej sesji
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
+
                 if(e.getSource()==confirm) {
-                    String whichrace="";
-                    for (Link link : links) {
-                        if(link.getFullname().contains(race.getSelectedItem())) {
-                            whichrace=link.getFullname();
+                    if(score.get(1).equals("QUALIFYING")){
+                        for (Participant p: participantArrayList) {
+                            if(p.getQualiBets()!=null) {
+                                links = add.add("2023_q.txt");
+                                String save = null;
+
+                                for (Link l : links) {
+                                    if (l.getFullname().contains(score.get(0))) {
+                                        save = l.getFullname();
+                                        break;
+                                    }
+                                }
+
+                                try {
+                                    driversArrayList = download.downloadScoresFromQualiOrSS(save);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                                countPointsAlgorithm.countQuali(p.getQualiBets(), driversArrayList, p);
+                            }
                         }
                     }
 
-                    String fastestlap="";
+                    else if(score.get(1).equals("SPRINT SHOOTOUT")){
+                        for (Participant p: participantArrayList) {
+                            if(p.getSprintShootoutBets()!=null) {
+                                links = add.add("2023_ss.txt");
+                                String save = null;
 
-                    int counter=0;
+                                for (Link l : links) {
+                                    if (l.getFullname().contains(score.get(0))) {
+                                        save = l.getFullname();
+                                        break;
+                                    }
+                                }
 
-                    for(int i=0; i<whichrace.length(); i++){
-                        if(whichrace.charAt(i)=='.'){
-                            if(whichrace.charAt(i+1)=='h') {
-                                counter++;
+                                try {
+                                    driversArrayList = download.downloadScoresFromQualiOrSS(save);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                                countPointsAlgorithm.countSprintShootout(p.getSprintShootoutBets(), driversArrayList, p);
                             }
                         }
-
-                        if(counter==2){
-                            break;
-                        }
-
-                        fastestlap+=whichrace.charAt(i);
-
                     }
 
-                    fastestlap+="/fastest-laps.html";
+                    else if(score.get(1).equals("SPRINT")){
+                        for (Participant p: participantArrayList) {
+                            if(p.getSprintBets()!=null) {
+                                links = add.add("2023_s.txt");
+                                String save = null;
 
-                    if(qualiorrace.getSelectedItem().equals("Wyscig")) {
-                        try {
-                            fastestDriver = download.downloadFastestLap(fastestlap);
-                        } catch (IOException e2) {
-                            // TODO Auto-generated catch block
-                            e2.printStackTrace();
-                        }
-
-                        try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-
-                        Participant chosen = null;
-                        for (Participant participant : participantArrayList) {
-                            if (participantC.getSelectedItem().equals(participant.getName())) {
-                                chosen = participant;
+                                for (Link l : links) {
+                                    if (l.getFullname().contains(score.get(0))) {
+                                        save = l.getFullname();
+                                        break;
+                                    }
+                                }
+                                try {
+                                    driversArrayList = download.downloadScoresFromRaceOrSprint(save);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                                countPointsAlgorithm.countSprint(p.getSprintBets(), driversArrayList, p);
                             }
                         }
-
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countRace(bets, driversArrayList, chosen, fastestDriver);
                     }
 
-                    else if(qualiorrace.getSelectedItem().equals("Kwalifikacje")) {
-                        try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
+                    else if(score.get(1).equals("RACE")){
+                        for (Participant p: participantArrayList) {
+                            if(p.getRaceBets()!=null) {
+                                links = add.add("2023_r.txt");
+                                linksFL = add.add("2023_fl.txt");
 
-                        Participant chosen = null;
-                        for (Participant participant : participantArrayList) {
-                            if (participantC.getSelectedItem().equals(participant.getName())) {
-                                chosen = participant;
+                                String saveR = null;
+                                String saveFL = null;
+
+                                for (Link l : links) {
+                                    if (l.getFullname().contains(score.get(0))) {
+                                        saveR = l.getFullname();
+                                        break;
+                                    }
+                                }
+
+                                for (Link l : linksFL) {
+                                    if (l.getFullname().contains(score.get(0))) {
+                                        saveFL = l.getFullname();
+                                        break;
+                                    }
+                                }
+
+                                String fastestDriver=null;
+
+                                try {
+                                    fastestDriver = download.downloadFastestLap(saveFL);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+
+                                try {
+                                    driversArrayList = download.downloadScoresFromRaceOrSprint(saveR);
+                                } catch (IOException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+
+                                countPointsAlgorithm.countRace(p.getRaceBets(), driversArrayList, p, fastestDriver);
                             }
                         }
-
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countQuali(bets, driversArrayList, chosen);
-
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
-                        try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-
-                        Participant chosen = null;
-                        for (Participant participant : participantArrayList) {
-                            if (participantC.getSelectedItem().equals(participant.getName())) {
-                                chosen = participant;
-                            }
-                        }
-
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countSprint(bets, driversArrayList, chosen);
-                    }
-
-                    else{ //Sprint Shootout
-                        try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-
-                        Participant chosen = null;
-                        for (Participant participant : participantArrayList) {
-                            if (participantC.getSelectedItem().equals(participant.getName())) {
-                                chosen = participant;
-                            }
-                        }
-
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countSprintShootout(bets, driversArrayList, chosen);
                     }
 
                     String pointsString="<html>";
@@ -388,6 +301,8 @@ public class Frame extends JFrame {
                     jokersString+="</html>";
                     pointsD.setText(pointsString);
                     jokersD.setText(jokersString);
+
+
                 }
             }
         });
