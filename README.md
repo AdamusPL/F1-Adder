@@ -12,3 +12,4 @@ To aplikacja obliczająca sumę punktów za obstawienie wyników w lidze typowan
 
 # Jakie biblioteki wykorzystuje?
 - JSoup - do pobrania wyników z oficjalnej strony F1 oraz aktualnego rankingu typowania ze ściśle określonej strony
+- JavaMail API - w celu pobrania wysłanych przez uczestników betów ze skrzynki pocztowej 
