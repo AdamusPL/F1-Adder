@@ -13,8 +13,8 @@ public class CountPointsAlgorithm {
 
     public void countRace(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen, String fastestDriver){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String getBets = bets.getText(); //take bets from jtextarea
+        String[] parts = getBets.split("\n"); //divide on position+driver
 
         int jokers=0;
         double points=0;
@@ -31,19 +31,19 @@ public class CountPointsAlgorithm {
                 continue;
             }
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" "); //divide position and driver
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet); //add bet to arraylist
         }
 
         for (Bet bet: betsArray) {
-            double eachpoints=0; //dla kazdego betu z osobna
+            double eachpoints=0; //for every bet separately
             for (Driver driver : driversArrayList) {
                 if(bet.getSurname().equals(driver.getName())) {
                     if(bet.getPosition()==driver.getPosition()) {
@@ -64,7 +64,7 @@ public class CountPointsAlgorithm {
             System.out.println(bet.getPosition()+" "+bet.getSurname()+" "+eachpoints);
         }
 
-        points*=2; //bo to wyscig
+        points*=2; //because it's race
 
         if(joker) {
             points*=2;
@@ -72,14 +72,14 @@ public class CountPointsAlgorithm {
         }
 
         chosen.setPoints(points);
-        System.out.println("Suma punktow: "+points);
+        System.out.println("Sum of points: "+points);
         System.out.println();
     }
 
     public void countQuali(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String getBets = bets.getText(); //take bets from jtextarea
+        String[] parts = getBets.split("\n"); //divide on position+driver
 
         int jokers=0;
         double points=0;
@@ -87,15 +87,15 @@ public class CountPointsAlgorithm {
         for (String string : parts) {
             String s=string;
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" "); //divide on position+driver
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet); //add bet to arraylist
         }
 
         for (Bet bet: betsArray) {
@@ -131,8 +131,8 @@ public class CountPointsAlgorithm {
 
     public void countSprint(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String getBets = bets.getText(); //take bets from jtextarea
+        String[] parts = getBets.split("\n"); //divide on position+driver
 
         int jokers=0;
         double points=0;
@@ -140,19 +140,19 @@ public class CountPointsAlgorithm {
         for (String string : parts) {
             String s=string;
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" "); //divide on position+driver
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet); //add bet to arraylist
         }
 
         for (Bet bet: betsArray) {
-            double eachpoints=0; //dla kazdego betu z osobna
+            double eachpoints=0; //for every bet separately
             for (Driver driver : driversArrayList) {
                 if(bet.getSurname().equals(driver.getName())) {
                     if(bet.getPosition()==driver.getPosition()) {
@@ -179,14 +179,14 @@ public class CountPointsAlgorithm {
         }
 
         chosen.setPoints(points);
-        System.out.println("Suma punktow: "+points);
+        System.out.println("Sum of points: "+points);
         System.out.println();
     }
 
     public void countSprintShootout(JTextArea bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String getBets = bets.getText(); //wziecie betow z jtextarea
-        String[] parts = getBets.split("\n"); //podzial na pozycja+kierowca
+        String getBets = bets.getText(); //take bets from jtextarea
+        String[] parts = getBets.split("\n"); //divide on position+driver
 
         int jokers=0;
         double points=0;
@@ -199,14 +199,14 @@ public class CountPointsAlgorithm {
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" "); //divide on position+driver
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
             betsArray.add(bet); //dodanie betu do arraylisty
         }
 
         for (Bet bet: betsArray) {
-            double eachpoints=0;
+            double eachpoints=0; //for every bet separately
             for (Driver driver : driversArrayList) {
                 if(bet.getSurname().equals(driver.getName())) {
                     if(bet.getPosition()==driver.getPosition()) {
@@ -228,7 +228,7 @@ public class CountPointsAlgorithm {
             System.out.println(bet.getPosition()+" "+bet.getSurname()+" "+eachpoints);
         }
 
-        points*=0.5; //bo to sprint shootout
+        points*=0.5; //because it's sprint shootout
 
         if(joker) {
             points*=2;

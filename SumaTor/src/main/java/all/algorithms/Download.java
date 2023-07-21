@@ -12,7 +12,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Download {
-    public ArrayList<Quote> downloadQuotes(){ //metoda robiąca arraylistę powiedzonek
+    public ArrayList<Quote> downloadQuotes(){ //method making arraylist of quotes from txt file
         ArrayList<Quote> quoteArrayList = new ArrayList<>();
         String line = "";
         try{
@@ -27,7 +27,7 @@ public class Download {
             br.close();
         }
         catch (FileNotFoundException ex){
-//            System.out.println("Nie mozna bylo odczytac pliku");
+//            System.out.println("Couldn't read file");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -38,10 +38,10 @@ public class Download {
         ArrayList<Driver> lifeScores = new ArrayList<>();
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copying html content of page
         ArrayList<String> stuff = new ArrayList<>();
 
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //for testing purposes
             if(!e.text().isEmpty()){
 //                System.out.println(e.text());
             }
@@ -65,10 +65,10 @@ public class Download {
                     stop=true;
                 }
 
-                if(stuff.size()==8 && stop){ //top 10 ma 8 danych, 10-15 7 danych, 15-20 6 danych
+                if(stuff.size()==8 && stop){ //top 10 has 8 pieces of data, 10-15 7 pieces of data, 15-20 6 pieces of data
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
-                    if(parts[1].equals("Guanyu")) parts[1]="Zhou";
+                    if(parts[1].equals("Guanyu")) parts[1]="Zhou"; //exception for one driver
                     Driver driver = new Driver(i,Integer.parseInt(stuff.get(1)),parts[1],stuff.get(3),
                         stuff.get(4),stuff.get(5),stuff.get(6),Integer.parseInt(stuff.get(7)));
                     i++;
@@ -82,7 +82,7 @@ public class Download {
                 else if(stuff.size()==7 && stop){
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
-                    if(parts[1].equals("Guanyu")) parts[1]="Zhou";
+                    if(parts[1].equals("Guanyu")) parts[1]="Zhou"; //exception for one driver
                     Driver driver = new Driver(i,Integer.parseInt(stuff.get(1)),parts[1],stuff.get(3),
                             stuff.get(4),stuff.get(5),Integer.parseInt(stuff.get(6)));
                     i++;
@@ -111,15 +111,15 @@ public class Download {
         return lifeScores;
     }
 
-    public ArrayList<Driver> downloadScoresFromRaceOrSprint(String link) throws IOException { //pobieranie wyników ze strony f1
+    public ArrayList<Driver> downloadScoresFromRaceOrSprint(String link) throws IOException { //downloading scores from race from official F1 page
         ArrayList<Driver> lifeScores = new ArrayList<>();
 
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copying html content of page
         ArrayList<String> stuff = new ArrayList<>();
 
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //for testing purposes
             if(!e.text().isEmpty()){
 //                System.out.println(e.text());
             }
@@ -150,10 +150,10 @@ public class Download {
     public String downloadFastestLap(String link) throws IOException {
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copying html content of page
 
         int i=0;
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //for testing purposes
             if(!e.text().isEmpty()){
                 if(i==2) {
                     String[] parts = e.text().split(" ");
@@ -177,7 +177,7 @@ public class Download {
         name=name.replace("ż","z");
     }
 
-    public ArrayList<Participant> downloadParticipants() throws IOException { //metoda pobierająca arraylistę uczestników
+    public ArrayList<Participant> downloadParticipants() throws IOException { //method downloading arraylist of participants from specific page
         ArrayList<Participant> participantArrayList=new ArrayList<>();
         Document doc = Jsoup.connect("https://sites.google.com/view/typerf1/klasyfikacja?authuser=0").timeout(6000).get();
 
@@ -203,7 +203,6 @@ public class Download {
                     }
                 }
 
-                //jeszcze jak dojda jokery na stronie to wpisac jokery
                 Participant participant = new Participant(name,surname,Double.parseDouble(points),numberOfUsedJokers);
                 participantArrayList.add(participant);
 //                System.out.println(name);

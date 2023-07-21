@@ -13,7 +13,7 @@ public class Add {
         ArrayList<Link> links = new ArrayList<>();
         String line = "";
         try{
-            BufferedReader br = new BufferedReader(new FileReader(filename)); //zmienic na 2023_r.txt
+            BufferedReader br = new BufferedReader(new FileReader(filename));
 
             while((line=br.readLine())!=null){
 //                System.out.println(line);
@@ -25,7 +25,7 @@ public class Add {
             br.close();
         }
         catch (FileNotFoundException ex){
-//            System.out.println("Nie mozna bylo odczytac pliku");
+//            System.out.println("Couldn't open up file");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -84,7 +84,7 @@ public class Frame extends JFrame {
         gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPane.setLayout(gbl_contentPane);
 
-        JLabel welcome = new JLabel("Witamy w programie do sumowania punktow F1 w sezonie 2023!");
+        JLabel welcome = new JLabel("Welcome in programme which sums up bets in 2023 F1 season!");
         GridBagConstraints gbc_welcome = new GridBagConstraints();
         gbc_welcome.insets = new Insets(0, 0, 5, 5);
         gbc_welcome.gridx = 12;
@@ -101,28 +101,28 @@ public class Frame extends JFrame {
         gbc_imageLabel.gridy = 1;
         contentPane.add(imageLabel, gbc_imageLabel);
 
-        JLabel quote = new JLabel("Quote na dzisiaj: "+randomQuote.textOfQuote);
+        JLabel quote = new JLabel("Quote for today: "+randomQuote.textOfQuote);
         GridBagConstraints gbc_quote = new GridBagConstraints();
         gbc_quote.insets = new Insets(0, 0, 5, 5);
         gbc_quote.gridx = 12;
         gbc_quote.gridy = 2;
         contentPane.add(quote, gbc_quote);
 
-        JLabel lblNewLabel = new JLabel("Imie");
+        JLabel lblNewLabel = new JLabel("Name");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.gridx = 11;
         gbc_lblNewLabel.gridy = 3;
         contentPane.add(lblNewLabel, gbc_lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Liczba zdobytych punktow");
+        JLabel lblNewLabel_1 = new JLabel("Points");
         GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
         gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_1.gridx = 12;
         gbc_lblNewLabel_1.gridy = 3;
         contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-        JLabel lblNewLabel_2 = new JLabel("Liczba uzytych Jokerow");
+        JLabel lblNewLabel_2 = new JLabel("Jokers used");
         GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
         gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
         gbc_lblNewLabel_2.gridx = 13;
@@ -174,7 +174,7 @@ public class Frame extends JFrame {
             participantC.add(participant.getName());
         }
 
-        JLabel lblNewLabel_4 = new JLabel("Oblicz punkty dla:");
+        JLabel lblNewLabel_4 = new JLabel("Count points for:");
         GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
         gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_4.gridx = 11;
@@ -188,10 +188,10 @@ public class Frame extends JFrame {
         contentPane.add(participantC, gbc_participantC);
 
         Choice qualiorrace = new Choice();
-        qualiorrace.add("Rzut sprinterski");
+        qualiorrace.add("Sprint Shootout");
         qualiorrace.add("Sprint");
-        qualiorrace.add("Kwalifikacje");
-        qualiorrace.add("Wyscig");
+        qualiorrace.add("Qualifying");
+        qualiorrace.add("Race");
 
         JScrollPane scrollPane = new JScrollPane();
         GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -218,15 +218,15 @@ public class Frame extends JFrame {
 
         contentPane.add(race, gbc_race);
 
-        JButton load = new JButton("Zaladuj");
+        JButton load = new JButton("Load");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==load){
-                    if(qualiorrace.getSelectedItem().equals("Kwalifikacje")){
+                    if(qualiorrace.getSelectedItem().equals("Qualifying")){
                         links = add.add("2023_q.txt");
                     }
 
-                    else if(qualiorrace.getSelectedItem().equals("Wyscig")){
+                    else if(qualiorrace.getSelectedItem().equals("Race")){
                         links = add.add("2023_r.txt");
                         linksFL = add.add("2023_fl.txt");
                     }
@@ -235,7 +235,7 @@ public class Frame extends JFrame {
                         links = add.add("2023_s.txt");
                     }
 
-                    else{ //rzut sprinterski
+                    else{ //sprint shootout
                         links = add.add("2023_ss.txt");
                     }
 
@@ -294,7 +294,7 @@ public class Frame extends JFrame {
 
                     fastestlap+="/fastest-laps.html";
 
-                    if(qualiorrace.getSelectedItem().equals("Wyscig")) {
+                    if(qualiorrace.getSelectedItem().equals("Race")) {
                         try {
                             fastestDriver = download.downloadFastestLap(fastestlap);
                         } catch (IOException e2) {
@@ -320,7 +320,7 @@ public class Frame extends JFrame {
                         countPointsAlgorithm.countRace(bets, driversArrayList, chosen, fastestDriver);
                     }
 
-                    else if(qualiorrace.getSelectedItem().equals("Kwalifikacje")) {
+                    else if(qualiorrace.getSelectedItem().equals("Qualifying")) {
                         try {
                             driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
                         } catch (IOException e1) {
