@@ -1,16 +1,16 @@
-# SumaTor - wersja z ręcznym wklejaniem betów*
-To aplikacja obliczająca sumę punktów za obstawienie wyników w lidze typowania wyników Formuły 1, działająca na zasadach ściśle określonych przez ligę
+# SumaTor - version with pasting bets manually*
+This app sums up points for betting F1 points in F1 4fun betting league, it works on rules strictly defined by league
 
-# Jak ona działa?
-1. Na prawo wybieramy czy chcemy policzyć wyniki z "Rzutu sprinterskiego", "Sprintu", "Kwalifikacji" czy "Wyścigu"
-2. Klikamy przycisk "Zaladuj", który załaduje do programu bazę adresów URL z wynikami ze strony F1
-3. Na lewo wybieramy weekend wyścigowy (np. bahrain)
-4. Po środku wybieramy uczestnika ligi, dla którego chcemy policzyć punkty
-5. Wklejamy bety w pole tekstowe w odpowiednim formacie
-6. Naciskamy "OK"
-7. Obliczone punkty pojawią się w kolumnie "Liczba zdobytych punktów"
+# How does it work?
+1. On the right, choose from which session ("Sprint Shootout", "Sprint", "Quali" or "Race") programme should count points
+2. Click "Load" button in order to load database of URL addresses with scores from official F1 page
+3. On the left, choose the race weekend (e.g. bahrain)
+4. In the middle, choose league participant, for whom count points
+5. Paste bets in text area in correct format
+6. Press the "OK" button
+7. Counted points will show up in "Points" column
 
-# Jakie biblioteki wykorzystuje?
-- JSoup - do pobrania wyników z oficjalnej strony F1 oraz aktualnego rankingu typowania ze ściśle określonej strony
+# Which libraries does it use?
+- JSoup - to download scores from official F1 page and current betting ranking from strictly defined page
 
-*inne wersje dostępne są w innych branchach
+*other versions of programme are available in different branches
