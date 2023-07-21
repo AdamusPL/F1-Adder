@@ -9,5 +9,7 @@ This app sums up points for betting F1 points in F1 4fun betting league, it work
 # Which libraries does it use?
 - JSoup - to download scores from official F1 page and current betting ranking from strictly defined page
 - JavaX Mail - to download mails with bets from specific e-mail account
+
 *other versions of programme are available in different branches
+
 **work in progress
