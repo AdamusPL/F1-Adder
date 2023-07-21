@@ -1,4 +1,4 @@
-# SumaTor
+# SumaTor - wersja z ręcznym wklejaniem betów*
 To aplikacja obliczająca sumę punktów za obstawienie wyników w lidze typowania wyników Formuły 1, działająca na zasadach ściśle określonych przez ligę
 
 # Jak ona działa?
@@ -12,3 +12,5 @@ To aplikacja obliczająca sumę punktów za obstawienie wyników w lidze typowan
 
 # Jakie biblioteki wykorzystuje?
 - JSoup - do pobrania wyników z oficjalnej strony F1 oraz aktualnego rankingu typowania ze ściśle określonej strony
+
+*inne wersje dostępne są w innych branchach
