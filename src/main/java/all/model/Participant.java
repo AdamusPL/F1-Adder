@@ -9,7 +9,6 @@ public class Participant {
     String sprintBets;
     String sprintShootoutBets;
     String qualiBets;
-    String raceBets;
 
     public String getSurname() {
         return surname;
@@ -30,6 +29,8 @@ public class Participant {
     public String getRaceBets() {
         return raceBets;
     }
+
+    String raceBets;
 
     public void setSurname(String surname) {
         this.surname = surname;

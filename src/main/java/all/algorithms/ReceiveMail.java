@@ -16,8 +16,8 @@ public class ReceiveMail {
         ArrayList<String> score = new ArrayList<>();
 
         String host="pop.gmail.com";
-        String user="xxxxxxxxxxxxxxx";
-        String password="xxxxxxxxxxxxxxxx";
+        String user="xxxxxxxxxxx"; //here give passes for your mailbox
+        String password="yyyyyyyy";
 
         Properties properties = new Properties();
         properties.put("mail.pop3.host", host);
@@ -48,10 +48,7 @@ public class ReceiveMail {
             race = parts[0];
             sessionF1 = parts[1];
 
-            whichParticipant(email,"adam",subject,bets,participants); //potem zmienic na adam, tak do testow jest, do testow syf
-            whichParticipant(email,"jakub",subject,bets,participants);
-            whichParticipant(email,"piotr",subject,bets,participants);
-            whichParticipant(email,"michal",subject,bets,participants);
+            whichParticipant(email,subject,bets,participants); //potem zmienic na adam, tak do testow jest, do testow syf
 
         }
 
@@ -66,77 +63,74 @@ public class ReceiveMail {
 
     }
 
-    private void whichParticipant(String email, String fragmentOfEmail, String subject, String bets, ArrayList<Participant> participants){
+    private void whichParticipant(String email, String subject, String bets, ArrayList<Participant> participants){
 
-        if(email.contains(fragmentOfEmail)){
-            for (Participant p:
-                    participants) {
-                if(p.getName().contains("Maciej")) {
-                    if (subject.contains("RACE")) {
-                        p.setRaceBets(bets);
-                        return;
-                    } else if (subject.contains("QUALIFYING")) {
-                        p.setQualiBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT SHOOTOUT")) {
-                        p.setSprintShootoutBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT")) {
-                        p.setSprintBets(bets);
-                        return;
-                    }
-                }
-
-                else if(p.getName().contains("Andrzej")) {
-                    if (subject.contains("RACE")) {
-                        p.setRaceBets(bets);
-                        return;
-                    } else if (subject.contains("QUALIFYING")) {
-                        p.setQualiBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT SHOOTOUT")) {
-                        p.setSprintShootoutBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT")) {
-                        p.setSprintBets(bets);
-                        return;
-                    }
-                }
-
-                else if(p.getName().contains("Cezary")) {
-                    if (subject.contains("RACE")) {
-                        p.setRaceBets(bets);
-                        return;
-                    } else if (subject.contains("QUALIFYING")) {
-                        p.setQualiBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT SHOOTOUT")) {
-                        p.setSprintShootoutBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT")) {
-                        p.setSprintBets(bets);
-                        return;
-                    }
-                }
-
-                else if(p.getName().contains("Mikolaj")) {
-                    if (subject.contains("RACE")) {
-                        p.setRaceBets(bets);
-                        return;
-                    } else if (subject.contains("QUALIFYING")) {
-                        p.setQualiBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT SHOOTOUT")) {
-                        p.setSprintShootoutBets(bets);
-                        return;
-                    } else if (subject.contains("SPRINT")) {
-                        p.setSprintBets(bets);
-                        return;
-                    }
-                }
-
+        for (Participant p:
+                participants) {
+            if(p.getName().contains("Maciej") && email.contains("sy")) { //do testow
+                if (subject.contains("RACE")) {
+                    p.setRaceBets(bets);
+                    return;
+                } else if (subject.contains("QUALIFYING")) {
+                    p.setQualiBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT SHOOTOUT")) {
+                    p.setSprintShootoutBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT")) {
+                    p.setSprintBets(bets);
+                    return;
                 }
             }
+
+            else if(p.getName().contains("Andrzej") && email.contains("adixo")) { //do testow
+                if (subject.contains("RACE")) {
+                    p.setRaceBets(bets);
+                    return;
+                } else if (subject.contains("QUALIFYING")) {
+                    p.setQualiBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT SHOOTOUT")) {
+                    p.setSprintShootoutBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT")) {
+                    p.setSprintBets(bets);
+                    return;
+                }
+            }
+
+            else if(p.getName().contains("Cezary") && email.contains("adam")) { //do testow
+                if (subject.contains("RACE")) {
+                    p.setRaceBets(bets);
+                    return;
+                } else if (subject.contains("QUALIFYING")) {
+                    p.setQualiBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT SHOOTOUT")) {
+                    p.setSprintShootoutBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT")) {
+                    p.setSprintBets(bets);
+                    return;
+                }
+            }
+
+            else if(p.getName().contains("Mikolaj") && email.contains("jakub")) {
+                if (subject.contains("RACE")) {
+                    p.setRaceBets(bets);
+                    return;
+                } else if (subject.contains("QUALIFYING")) {
+                    p.setQualiBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT SHOOTOUT")) {
+                    p.setSprintShootoutBets(bets);
+                    return;
+                } else if (subject.contains("SPRINT")) {
+                    p.setSprintBets(bets);
+                    return;
+                }
+            }
+
         }
     }
 

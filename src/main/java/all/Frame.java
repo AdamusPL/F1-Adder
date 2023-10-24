@@ -81,7 +81,7 @@ public class Frame extends JFrame {
         gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPane.setLayout(gbl_contentPane);
 
-        JLabel welcome = new JLabel("Witamy w programie do sumowania punktow F1 w sezonie 2023!");
+        JLabel welcome = new JLabel("Welcome to the program which sums up points from betting F1 results!");
         GridBagConstraints gbc_welcome = new GridBagConstraints();
         gbc_welcome.insets = new Insets(0, 0, 5, 5);
         gbc_welcome.gridx = 12;
@@ -89,7 +89,6 @@ public class Frame extends JFrame {
         contentPane.add(welcome, gbc_welcome);
 
         JLabel imageLabel = new JLabel();
-        //zmienic logo.png potem
         imageLabel.setIcon(new ImageIcon("logo.png")); //Sets the image to be displayed as an icon
         Dimension size = imageLabel.getPreferredSize(); //Gets the size of the image
         GridBagConstraints gbc_imageLabel = new GridBagConstraints();
@@ -98,28 +97,28 @@ public class Frame extends JFrame {
         gbc_imageLabel.gridy = 1;
         contentPane.add(imageLabel, gbc_imageLabel);
 
-        JLabel quote = new JLabel("Quote na dzisiaj: "+randomQuote.textOfQuote);
+        JLabel quote = new JLabel("Quote for today: "+randomQuote.textOfQuote);
         GridBagConstraints gbc_quote = new GridBagConstraints();
         gbc_quote.insets = new Insets(0, 0, 5, 5);
         gbc_quote.gridx = 12;
         gbc_quote.gridy = 2;
         contentPane.add(quote, gbc_quote);
 
-        JLabel lblNewLabel = new JLabel("Imie");
+        JLabel lblNewLabel = new JLabel("Name");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.gridx = 11;
         gbc_lblNewLabel.gridy = 3;
         contentPane.add(lblNewLabel, gbc_lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Liczba zdobytych punktow");
+        JLabel lblNewLabel_1 = new JLabel("Points");
         GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
         gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_1.gridx = 12;
         gbc_lblNewLabel_1.gridy = 3;
         contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-        JLabel lblNewLabel_2 = new JLabel("Liczba uzytych Jokerow");
+        JLabel lblNewLabel_2 = new JLabel("Used jokers");
         GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
         gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 0);
         gbc_lblNewLabel_2.gridx = 13;
@@ -173,9 +172,8 @@ public class Frame extends JFrame {
         gbc_lblNewLabel_5.gridy = 9;
         contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
-        JButton confirm = new JButton("Uaktualnij wyniki");
+        JButton confirm = new JButton("Update scores");
 
-        //dodac pobieranie wynikow z danej sesji
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();

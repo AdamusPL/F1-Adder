@@ -13,10 +13,8 @@ public class CountPointsAlgorithm {
 
     public void countRace(String bets, ArrayList<Driver> driversArrayList, Participant chosen, String fastestDriver){
         boolean joker=false;
-        //tu jeszcze pozmieniac!
-        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
 
-        //zamien zeby nie bylo \n na poczatku
+        String[] parts = bets.split("\r\n"); //divide on position+driver
 
         String replace="";
 
@@ -43,19 +41,19 @@ public class CountPointsAlgorithm {
                 continue;
             }
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" "); //divide on position and driver
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet); //add bet to arraylist
         }
 
         for (Bet bet: betsArray) {
-            double eachpoints=0; //dla kazdego betu z osobna
+            double eachpoints=0; //for every bet separately
             for (Driver driver : driversArrayList) {
                 if(bet.getSurname().equals(driver.getName())) {
                     if(bet.getPosition()==driver.getPosition()) {
@@ -76,7 +74,7 @@ public class CountPointsAlgorithm {
             System.out.println(bet.getPosition()+" "+bet.getSurname()+" "+eachpoints);
         }
 
-        points*=2; //bo to wyscig
+        points*=2; //because it's race
 
         if(joker) {
             points*=2;
@@ -90,8 +88,18 @@ public class CountPointsAlgorithm {
 
     public void countQuali(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        //tu pewnie cos nie zadziala jeszcze do konca z \n na poczatku
-        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
+
+        String[] parts = bets.split("\r\n");
+
+        String replace="";
+
+        for(int i=0; i<parts[0].length(); i++){
+            if(i>=1){
+                replace+=parts[0].charAt(i);
+            }
+        }
+
+        parts[0]=replace;
 
         int jokers=0;
         double points=0;
@@ -99,15 +107,15 @@ public class CountPointsAlgorithm {
         for (String string : parts) {
             String s=string;
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" ");
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet);
         }
 
         for (Bet bet: betsArray) {
@@ -143,7 +151,17 @@ public class CountPointsAlgorithm {
 
     public void countSprint(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String[] parts = bets.split("\r\n"); //podzial na pozycja+kierowca
+        String[] parts = bets.split("\r\n");
+
+        String replace="";
+
+        for(int i=0; i<parts[0].length(); i++){
+            if(i>=1){
+                replace+=parts[0].charAt(i);
+            }
+        }
+
+        parts[0]=replace;
 
         int jokers=0;
         double points=0;
@@ -151,15 +169,15 @@ public class CountPointsAlgorithm {
         for (String string : parts) {
             String s=string;
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" ");
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
-            betsArray.add(bet); //dodanie betu do arraylisty
+            betsArray.add(bet);
         }
 
         for (Bet bet: betsArray) {
@@ -196,7 +214,17 @@ public class CountPointsAlgorithm {
 
     public void countSprintShootout(String bets, ArrayList<Driver> driversArrayList, Participant chosen){
         boolean joker=false;
-        String[] parts = bets.split("\n"); //podzial na pozycja+kierowca
+        String[] parts = bets.split("\r\n");
+
+        String replace="";
+
+        for(int i=0; i<parts[0].length(); i++){
+            if(i>=1){
+                replace+=parts[0].charAt(i);
+            }
+        }
+
+        parts[0]=replace;
 
         int jokers=0;
         double points=0;
@@ -204,12 +232,12 @@ public class CountPointsAlgorithm {
         for (String string : parts) {
             String s=string;
 
-            if(s.equals("(J)")) { //tu jeszcze zeby jakos dodawal, bo jakbym dal w kwali i race jokera to by dodal 2
+            if(s.equals("(J)")) {
                 joker=true;
                 break;
             }
 
-            String[] parts2=s.split(" "); //oddzielenie pozycji i kierowcy
+            String[] parts2=s.split(" ");
             parts2[0]=parts2[0].replace(".","");
             Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
             betsArray.add(bet); //dodanie betu do arraylisty
@@ -238,7 +266,7 @@ public class CountPointsAlgorithm {
             System.out.println(bet.getPosition()+" "+bet.getSurname()+" "+eachpoints);
         }
 
-        points*=0.5; //bo to sprint shootout
+        points*=0.5; //because it's sprint shootout
 
         if(joker) {
             points*=2;

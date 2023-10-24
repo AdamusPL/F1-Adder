@@ -12,7 +12,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Download {
-    public ArrayList<Quote> downloadQuotes(){ //metoda robiąca arraylistę powiedzonek
+    public ArrayList<Quote> downloadQuotes(){ //method making arraylist with quotes from .txt file
         ArrayList<Quote> quoteArrayList = new ArrayList<>();
         String line = "";
         try{
@@ -38,10 +38,10 @@ public class Download {
         ArrayList<Driver> lifeScores = new ArrayList<>();
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copy the content of page
         ArrayList<String> stuff = new ArrayList<>();
 
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //to test
             if(!e.text().isEmpty()){
 //                System.out.println(e.text());
             }
@@ -65,12 +65,12 @@ public class Download {
                     stop=true;
                 }
 
-                if(stuff.size()==8 && stop){ //top 10 ma 8 danych, 10-15 7 danych, 15-20 6 danych
+                if(stuff.size()==8 && stop){ //top 10 have 8 data, 10-15 7 data, 15-20 6 data
                     String[] parts = stuff.get(2).split(" ");
 //                	System.out.println(parts[1]);
                     if(parts[1].equals("Guanyu")) parts[1]="Zhou";
                     Driver driver = new Driver(i,Integer.parseInt(stuff.get(1)),parts[1],stuff.get(3),
-                        stuff.get(4),stuff.get(5),stuff.get(6),Integer.parseInt(stuff.get(7)));
+                            stuff.get(4),stuff.get(5),stuff.get(6),Integer.parseInt(stuff.get(7)));
                     i++;
                     lifeScores.add(driver);
                     stuff.clear();
@@ -111,15 +111,15 @@ public class Download {
         return lifeScores;
     }
 
-    public ArrayList<Driver> downloadScoresFromRaceOrSprint(String link) throws IOException { //pobieranie wyników ze strony f1
+    public ArrayList<Driver> downloadScoresFromRaceOrSprint(String link) throws IOException { //download results from F1 page
         ArrayList<Driver> lifeScores = new ArrayList<>();
 
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copy the content of page
         ArrayList<String> stuff = new ArrayList<>();
 
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //to test
             if(!e.text().isEmpty()){
 //                System.out.println(e.text());
             }
@@ -150,10 +150,10 @@ public class Download {
     public String downloadFastestLap(String link) throws IOException {
         Document doc = Jsoup.connect(link).timeout(6000).get();
 
-        Elements elements = doc.select("td"); //skopiowanie zawartosci strony
+        Elements elements = doc.select("td"); //copy the content of page
 
         int i=0;
-        for (Element e : elements) { //do testowania
+        for (Element e : elements) { //to test
             if(!e.text().isEmpty()){
                 if(i==2) {
                     String[] parts = e.text().split(" ");
@@ -177,39 +177,31 @@ public class Download {
         name=name.replace("ż","z");
     }
 
-    public ArrayList<Participant> downloadParticipants() throws IOException { //metoda pobierająca arraylistę uczestników
+    public ArrayList<Participant> downloadParticipants() throws IOException { //method making arraylist of participants, downloading them from friend's page
         ArrayList<Participant> participantArrayList=new ArrayList<>();
-        Document doc = Jsoup.connect("https://sites.google.com/view/typerf1/klasyfikacja?authuser=0").timeout(6000).get();
+        Document doc = Jsoup.connect("https://sites.google.com/view/typowanief1rk88/strona-g%C5%82%C3%B3wna").timeout(6000).get();
 
-        Elements elements = doc.select("li");
+        Elements elements = doc.getElementsByClass("C9DxTc ");
 
         for (Element e: elements) {
             if(e.text().contains("pkt")){
-                int numberOfUsedJokers=0;
+
                 String string = e.text();
                 String[] parts = string.split(" ");
                 String name = parts[0];
-                changeLanguage(name);
                 String surname = parts[1];
-                changeLanguage(surname);
                 String points = parts[2];
+                String jokers = parts[4];
 
-                int i=4;
-//                System.out.println(parts.length);
-                while(i<parts.length) {
-                    if(parts[i].equals("J")) {
-                        numberOfUsedJokers++;
-                        i++;
-                    }
-                }
+                int numberOfUsedJokers = jokers.length();
 
-                //jeszcze jak dojda jokery na stronie to wpisac jokery
                 Participant participant = new Participant(name,surname,Double.parseDouble(points),numberOfUsedJokers);
                 participantArrayList.add(participant);
 //                System.out.println(name);
 //                System.out.println(surname);
 //                System.out.println(points);
             }
+
         }
         return participantArrayList;
     }

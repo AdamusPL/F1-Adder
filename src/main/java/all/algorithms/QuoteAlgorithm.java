@@ -9,7 +9,7 @@ public class QuoteAlgorithm {
 
     public Quote chooseRandomQuote(){
         Download download = new Download();
-        ArrayList<Quote> quoteArrayList = download.downloadQuotes(); //pobierz listę powiedzonek
+        ArrayList<Quote> quoteArrayList = download.downloadQuotes();
 
         Quote randomQuote;
 

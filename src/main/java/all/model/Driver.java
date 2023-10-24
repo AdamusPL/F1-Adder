@@ -25,7 +25,7 @@ public class Driver {
 
     //Q3
     public Driver(int position, int number, String name, String team, String time1, String time2,
-    String time3, int drivenLaps){
+                  String time3, int drivenLaps){
         this.position=position;
         this.number=number;
         this.name=name;
@@ -38,7 +38,7 @@ public class Driver {
 
     //Q2
     public Driver(int position, int number, String name, String team, String time1, String time2,
-    int drivenLaps){
+                  int drivenLaps){
         this.position=position;
         this.number=number;
         this.name=name;
