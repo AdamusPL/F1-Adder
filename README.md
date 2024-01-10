@@ -11,5 +11,3 @@ This app sums up points for betting F1 points in F1 4fun betting league, it work
 - JavaX Mail - to download mails with bets from specific e-mail account
 
 *other versions of programme are available in different branches
-
-**work in progress
