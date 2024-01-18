@@ -1,4 +1,4 @@
-# SumaTor - version with pasting bets manually*
+# F1-Adder - version with pasting bets manually*
 This app sums up points for betting F1 points in F1 4fun betting league, it works on rules strictly defined by league
 
 # How does it work?
