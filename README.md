@@ -1,4 +1,4 @@
-# SumaTor - version with downloading bets from e-mail*
+# F1-Adder - version with downloading bets from e-mail*
 This app sums up points for betting F1 points in F1 4fun betting league, it works on rules strictly defined by league
 
 # How does it work?
