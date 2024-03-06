@@ -13,11 +13,14 @@ This app sums up points for betting F1 points in F1 (4fun) Betting League, it wo
 # How are points counted?
 - Precise bet: If participant guessed the exact position of driver, he/she receives 2 points
 - Bet missed by one position: If participant's bet differentiate by 1 position, he/she receives 1 point
+
 Additional points for podium:
 - First place: Additional 3 points for guessing exact driver on the first place
 - Second place: Additional 2 points for guessing exact driver on the second place
 - Third place: Additional 1 point for guessing exact driver on the third place
+
 Participants have to guess the fastest lap additionally in race session. They can get 1 point for that.
+
 Points multiplier:
 - 0.5x - Sprint Shootout
 - 1x - Sprint/Qualifying
