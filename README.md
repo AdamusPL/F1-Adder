@@ -3,7 +3,7 @@ This app sums up points for betting F1 points in F1 (4fun) Betting League, it wo
 
 # How does it work?
 1. On the right, choose from which session ("Sprint Shootout", "Sprint", "Quali" or "Race") programme should count points
-2. Click "Load" button in order to load database of URL addresses from official F1 page
+2. Click "Load" button in order to load URL addresses of official F1 page which store scores from desired session for every race
 3. On the left, choose the race weekend (e.g. bahrain)
 4. In the middle, choose league participant, for whom count points
 5. Paste bets in text area in correct format
