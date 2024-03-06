@@ -1,0 +1,23 @@
+all/algorithms/QuoteAlgorithm.java
+ all.algorithms.QuoteAlgorithm
+all/model/Quote.java
+ all.model.Quote
+all/model/Participant.java
+ all.model.Participant
+all/model/Bet.java
+ all.model.Bet
+all/algorithms/CountPointsAlgorithm.java
+ all.algorithms.CountPointsAlgorithm
+all/algorithms/Add.java
+ all.algorithms.Add
+all/model/Link.java
+ all.model.Link
+all/model/Driver.java
+ all.model.Driver
+all/algorithms/Download.java
+ all.algorithms.Download
+all/Frame.java
+ all.Frame
+ all.Frame$1
+ all.Frame$2
+ all.Frame$3

@@ -179,29 +179,21 @@ public class Download {
 
     public ArrayList<Participant> downloadParticipants() throws IOException { //method downloading arraylist of participants from specific page
         ArrayList<Participant> participantArrayList=new ArrayList<>();
-        Document doc = Jsoup.connect("https://sites.google.com/view/typerf1/klasyfikacja?authuser=0").timeout(6000).get();
+        Document doc = Jsoup.connect("https://sites.google.com/view/typowanief1/strona-g%C5%82%C3%B3wna").timeout(6000).get();
 
-        Elements elements = doc.select("li");
+        Elements elements = doc.getElementsByClass("C9DxTc ");
 
         for (Element e: elements) {
             if(e.text().contains("pkt")){
-                int numberOfUsedJokers=0;
+
                 String string = e.text();
                 String[] parts = string.split(" ");
                 String name = parts[0];
-                changeLanguage(name);
                 String surname = parts[1];
-                changeLanguage(surname);
                 String points = parts[2];
+                String jokers = parts[4];
 
-                int i=4;
-//                System.out.println(parts.length);
-                while(i<parts.length) {
-                    if(parts[i].equals("J")) {
-                        numberOfUsedJokers++;
-                        i++;
-                    }
-                }
+                int numberOfUsedJokers = jokers.length();
 
                 Participant participant = new Participant(name,surname,Double.parseDouble(points),numberOfUsedJokers);
                 participantArrayList.add(participant);
@@ -209,6 +201,7 @@ public class Download {
 //                System.out.println(surname);
 //                System.out.println(points);
             }
+
         }
         return participantArrayList;
     }

@@ -44,8 +44,6 @@ public class Frame extends JFrame {
                 try {
                     Frame frame = new Frame();
                     frame.setVisible(true);
-//                    Sound sound = new Sound();
-//                    sound.playSound("f1theme.wav");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
