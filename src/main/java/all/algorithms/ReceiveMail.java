@@ -67,7 +67,7 @@ public class ReceiveMail {
 
         for (Participant p:
                 participants) {
-            if(p.getName().contains("Maciej") && email.contains("sy")) { //do testow
+            if(p.getName().contains("Maciej") && email.contains("adam")) { //do testow
                 if (subject.contains("RACE")) {
                     p.setRaceBets(bets);
                     return;
@@ -83,7 +83,7 @@ public class ReceiveMail {
                 }
             }
 
-            else if(p.getName().contains("Andrzej") && email.contains("adixo")) { //do testow
+            else if(p.getName().contains("Andrzej") && email.contains("michal")) { //do testow
                 if (subject.contains("RACE")) {
                     p.setRaceBets(bets);
                     return;
@@ -99,7 +99,7 @@ public class ReceiveMail {
                 }
             }
 
-            else if(p.getName().contains("Cezary") && email.contains("adam")) { //do testow
+            else if(p.getName().contains("Cezary") && email.contains("piotr")) { //do testow
                 if (subject.contains("RACE")) {
                     p.setRaceBets(bets);
                     return;
