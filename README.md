@@ -13,7 +13,9 @@ This app sums up points for betting F1 points in F1 (4fun) Betting League, it wo
 Additional points for podium:
 - First place: Additional 3 points for guessing exact driver on the first place
 - Second place: Additional 2 points for guessing exact driver on the second place
-- Third place: Additional 1 point for guessing exact driver on the third place Participants have to guess the fastest lap additionally in race session. They can get 1 point for that. 
+- Third place: Additional 1 point for guessing exact driver on the third place
+
+Participants have to guess the fastest lap additionally in race session. They can get 1 point for that. 
 
 Points multiplier:
 - 0.5x - Sprint Shootout
