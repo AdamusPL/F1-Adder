@@ -45,6 +45,11 @@ Points multiplier:
 # For Race, you have to bet fastest lap additionally, so under bets like above you have to write e.g.:
 NO: Verstappen
 
+# Topic of the mail
+It has to include country and name of the session, e.g.: "united-states QUALIFYING"
+
+It only reads mails from current participants of league
+
 # Which libraries does it use?
 - JSoup - to download scores from official F1 page and current betting ranking from strictly defined page
 - JavaX Mail - to download mails with bets from specific e-mail account
