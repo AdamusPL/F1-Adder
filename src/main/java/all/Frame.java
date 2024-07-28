@@ -1,7 +1,6 @@
 package all;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -26,17 +25,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Frame extends JFrame {
-
     private JPanel contentPane;
 
-    QuoteAlgorithm quoteAlgorithm = new QuoteAlgorithm();
-    Quote randomQuote = quoteAlgorithm.chooseRandomQuote();
-    Download download = new Download();
-    LinksHandler add = new LinksHandler();
-    ArrayList<Driver> driversArrayList = null;
-    String fastestDriver = null;
-    ArrayList<Link> links;
-    ArrayList<Link> linksFL;
+    private QuoteAlgorithm quoteAlgorithm;
+    private Quote randomQuote;
+    private Download download;
+    private LinksHandler linksHandler;
+    private ArrayList<Driver> driversArrayList;
+    private String fastestDriver;
+    private ArrayList<Link> links;
+    private ArrayList<Link> linksFL;
 
 
     /**
@@ -45,6 +43,10 @@ public class Frame extends JFrame {
      * @throws IOException
      */
     public Frame() throws Exception {
+        this.quoteAlgorithm = new QuoteAlgorithm();
+        this.randomQuote = quoteAlgorithm.chooseRandomQuote();
+        this.download = new Download();
+        this.linksHandler = new LinksHandler();
         ArrayList<Participant> participantArrayList = download.downloadParticipants();
 
         ReceiveMail receiveMail = new ReceiveMail();
@@ -165,7 +167,7 @@ public class Frame extends JFrame {
                         for (Participant p : participantArrayList) {
                             if (p.getQualiBets() != null) {
                                 CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getQualiBets(), driversArrayList, p);
-                                links = add.add("2023_q.txt");
+                                links = linksHandler.add("2023_q.txt");
                                 String save = null;
 
                                 for (Link l : links) {
@@ -187,7 +189,7 @@ public class Frame extends JFrame {
                         for (Participant p : participantArrayList) {
                             if (p.getSprintShootoutBets() != null) {
                                 CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getSprintShootoutBets(), driversArrayList, p);
-                                links = add.add("2023_ss.txt");
+                                links = linksHandler.add("2023_ss.txt");
                                 String save = null;
 
                                 for (Link l : links) {
@@ -209,7 +211,7 @@ public class Frame extends JFrame {
                         for (Participant p : participantArrayList) {
                             if (p.getSprintBets() != null) {
                                 CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getSprintBets(), driversArrayList, p);
-                                links = add.add("2023_s.txt");
+                                links = linksHandler.add("2023_s.txt");
                                 String save = null;
 
                                 for (Link l : links) {
@@ -230,8 +232,8 @@ public class Frame extends JFrame {
                         for (Participant p : participantArrayList) {
                             if (p.getRaceBets() != null) {
                                 CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getRaceBets(), driversArrayList, p, fastestDriver);
-                                links = add.add("2023_r.txt");
-                                linksFL = add.add("2023_fl.txt");
+                                links = linksHandler.add("2023_r.txt");
+                                linksFL = linksHandler.add("2023_fl.txt");
 
                                 String saveR = null;
                                 String saveFL = null;

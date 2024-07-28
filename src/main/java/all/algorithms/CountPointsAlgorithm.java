@@ -2,8 +2,6 @@ package all.algorithms;
 
 import java.util.ArrayList;
 
-import javax.swing.JTextArea;
-
 import all.model.Bet;
 import all.model.Driver;
 import all.model.Participant;
