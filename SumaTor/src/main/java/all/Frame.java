@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import all.algorithms.Add;
+import all.algorithms.LinksHandler;
 import all.algorithms.CountPointsAlgorithm;
 import all.algorithms.Download;
 import all.algorithms.QuoteAlgorithm;
@@ -32,40 +32,26 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
 public class Frame extends JFrame {
-
     private JPanel contentPane;
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Frame frame = new Frame();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    QuoteAlgorithm quoteAlgorithm = new QuoteAlgorithm();
-    Quote randomQuote = quoteAlgorithm.chooseRandomQuote();
-    Download download = new Download();
-    Add add = new Add();
-    ArrayList<Driver> driversArrayList = null;
-    String fastestDriver = null;
-    ArrayList<Link> links;
-    ArrayList<Link> linksFL;
-
+    private QuoteAlgorithm quoteAlgorithm;
+    private Quote randomQuote;
+    private Download download;
+    private LinksHandler linksHandler;
+    private ArrayList<Driver> driversArrayList;
+    private String fastestDriver;
+    private ArrayList<Link> links;
+    private ArrayList<Link> linksFL;
 
     /**
      * Create the frame.
+     *
      * @throws IOException
      */
     public Frame() throws IOException {
+        this.quoteAlgorithm = new QuoteAlgorithm();
+        this.randomQuote = quoteAlgorithm.chooseRandomQuote();
+        this.download = new Download();
+        this.linksHandler = new LinksHandler();
         ArrayList<Participant> participantArrayList = download.downloadParticipants();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,7 +76,7 @@ public class Frame extends JFrame {
         contentPane.add(welcome, gbc_welcome);
 
         JLabel imageLabel = new JLabel();
-        //zmienic logo.png potem
+
         imageLabel.setIcon(new ImageIcon("logo.png")); //Sets the image to be displayed as an icon
         Dimension size = imageLabel.getPreferredSize(); //Gets the size of the image
         GridBagConstraints gbc_imageLabel = new GridBagConstraints();
@@ -99,7 +85,7 @@ public class Frame extends JFrame {
         gbc_imageLabel.gridy = 1;
         contentPane.add(imageLabel, gbc_imageLabel);
 
-        JLabel quote = new JLabel("Quote for today: "+randomQuote.textOfQuote);
+        JLabel quote = new JLabel("Quote for today: " + randomQuote.getTextOfQuote());
         GridBagConstraints gbc_quote = new GridBagConstraints();
         gbc_quote.insets = new Insets(0, 0, 5, 5);
         gbc_quote.gridx = 12;
@@ -127,17 +113,17 @@ public class Frame extends JFrame {
         gbc_lblNewLabel_2.gridy = 3;
         contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-        String nameString="<html>";
-        String pointsString="<html>";
-        String jokersString="<html>";
+        String nameString = "<html>";
+        String pointsString = "<html>";
+        String jokersString = "<html>";
         for (Participant participant : participantArrayList) {
-            nameString+=participant.getName()+"<br>";
-            pointsString+=participant.getPoints()+"<br>";
-            jokersString+=participant.getNumberOfUsedJokers()+"<br>";
+            nameString += participant.getName() + "<br>";
+            pointsString += participant.getPoints() + "<br>";
+            jokersString += participant.getNumberOfUsedJokers() + "<br>";
         }
-        nameString+="</html>";
-        pointsString+="</html>";
-        jokersString+="</html>";
+        nameString += "</html>";
+        pointsString += "</html>";
+        jokersString += "</html>";
 
         JLabel namesD = new JLabel(nameString);
         GridBagConstraints gbc_namesD = new GridBagConstraints();
@@ -185,11 +171,11 @@ public class Frame extends JFrame {
         gbc_participantC.gridy = 6;
         contentPane.add(participantC, gbc_participantC);
 
-        Choice qualiorrace = new Choice();
-        qualiorrace.add("Sprint Shootout");
-        qualiorrace.add("Sprint");
-        qualiorrace.add("Qualifying");
-        qualiorrace.add("Race");
+        Choice sessionChoice = new Choice();
+        sessionChoice.add("Sprint Shootout");
+        sessionChoice.add("Sprint");
+        sessionChoice.add("Qualifying");
+        sessionChoice.add("Race");
 
         JScrollPane scrollPane = new JScrollPane();
         GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -205,40 +191,34 @@ public class Frame extends JFrame {
         gbc_qualiorrace.insets = new Insets(0, 0, 5, 0);
         gbc_qualiorrace.gridx = 13;
         gbc_qualiorrace.gridy = 7;
-        contentPane.add(qualiorrace, gbc_qualiorrace);
+        contentPane.add(sessionChoice, gbc_qualiorrace);
 
-        Choice race = new Choice();
+        Choice grandPrix = new Choice();
 
         GridBagConstraints gbc_race = new GridBagConstraints();
         gbc_race.insets = new Insets(0, 0, 5, 5);
         gbc_race.gridx = 11;
         gbc_race.gridy = 7;
 
-        contentPane.add(race, gbc_race);
+        contentPane.add(grandPrix, gbc_race);
 
         JButton load = new JButton("Load");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==load){
-                    if(qualiorrace.getSelectedItem().equals("Qualifying")){
-                        links = add.add("2023_q.txt");
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Race")){
-                        links = add.add("2023_r.txt");
-                        linksFL = add.add("2023_fl.txt");
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
-                        links = add.add("2023_s.txt");
-                    }
-
-                    else{ //sprint shootout
-                        links = add.add("2023_ss.txt");
+                if (e.getSource() == load) {
+                    if (sessionChoice.getSelectedItem().equals("Qualifying")) {
+                        links = linksHandler.add("2023_q.txt");
+                    } else if (sessionChoice.getSelectedItem().equals("Race")) {
+                        links = linksHandler.add("2023_r.txt");
+                        linksFL = linksHandler.add("2023_fl.txt");
+                    } else if (sessionChoice.getSelectedItem().equals("Sprint")) { //Sprint
+                        links = linksHandler.add("2023_s.txt");
+                    } else { //sprint shootout
+                        links = linksHandler.add("2023_ss.txt");
                     }
 
                     for (Link link : links) {
-                        race.add(link.getName());
+                        grandPrix.add(link.getName());
                         contentPane.revalidate();
                     }
                 }
@@ -259,49 +239,48 @@ public class Frame extends JFrame {
         contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
 
-
         JButton confirm = new JButton("OK");
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==confirm) {
-                    String whichrace="";
+                if (e.getSource() == confirm) {
+                    String grandPrixName = "";
                     for (Link link : links) {
-                        if(link.getFullname().contains(race.getSelectedItem())) {
-                            whichrace=link.getFullname();
+                        if (link.getFullname().contains(grandPrix.getSelectedItem())) {
+                            grandPrixName = link.getFullname();
                         }
                     }
 
-                    String fastestlap="";
+                    String fastestLap = "";
 
-                    int counter=0;
+                    int counter = 0;
 
-                    for(int i=0; i<whichrace.length(); i++){
-                        if(whichrace.charAt(i)=='.'){
-                            if(whichrace.charAt(i+1)=='h') {
+                    for (int i = 0; i < grandPrixName.length(); i++) {
+                        if (grandPrixName.charAt(i) == '.') {
+                            if (grandPrixName.charAt(i + 1) == 'h') {
                                 counter++;
                             }
                         }
 
-                        if(counter==2){
+                        if (counter == 2) {
                             break;
                         }
 
-                        fastestlap+=whichrace.charAt(i);
+                        fastestLap += grandPrixName.charAt(i);
 
                     }
 
-                    fastestlap+="/fastest-laps.html";
+                    fastestLap += "/fastest-laps.html";
 
-                    if(qualiorrace.getSelectedItem().equals("Race")) {
+                    if (sessionChoice.getSelectedItem().equals("Race")) {
                         try {
-                            fastestDriver = download.downloadFastestLap(fastestlap);
+                            fastestDriver = download.downloadFastestLap(fastestLap);
                         } catch (IOException e2) {
                             // TODO Auto-generated catch block
                             e2.printStackTrace();
                         }
 
                         try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
+                            driversArrayList = download.downloadScoresFromRaceOrSprint(grandPrixName);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -314,13 +293,11 @@ public class Frame extends JFrame {
                             }
                         }
 
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countRace(bets, driversArrayList, chosen, fastestDriver);
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Qualifying")) {
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(bets, driversArrayList, chosen, fastestDriver);
+                        countPointsAlgorithm.countPointsFromRace();
+                    } else if (sessionChoice.getSelectedItem().equals("Qualifying")) {
                         try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
+                            driversArrayList = download.downloadScoresFromQualiOrSS(grandPrixName);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -333,14 +310,12 @@ public class Frame extends JFrame {
                             }
                         }
 
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countQuali(bets, driversArrayList, chosen);
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(bets, driversArrayList, chosen);
+                        countPointsAlgorithm.countPointsFromQualifying();
 
-                    }
-
-                    else if(qualiorrace.getSelectedItem().equals("Sprint")){ //Sprint
+                    } else if (sessionChoice.getSelectedItem().equals("Sprint")) { //Sprint
                         try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(whichrace);
+                            driversArrayList = download.downloadScoresFromRaceOrSprint(grandPrixName);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -353,13 +328,11 @@ public class Frame extends JFrame {
                             }
                         }
 
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countSprint(bets, driversArrayList, chosen);
-                    }
-
-                    else{ //Sprint Shootout
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(bets, driversArrayList, chosen);
+                        countPointsAlgorithm.countPointsFromSprint();
+                    } else { //Sprint Shootout
                         try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(whichrace);
+                            driversArrayList = download.downloadScoresFromQualiOrSS(grandPrixName);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -372,18 +345,18 @@ public class Frame extends JFrame {
                             }
                         }
 
-                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-                        countPointsAlgorithm.countSprintShootout(bets, driversArrayList, chosen);
+                        CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(bets, driversArrayList, chosen);
+                        countPointsAlgorithm.countPointsFromSprintShootout();
                     }
 
-                    String pointsString="<html>";
-                    String jokersString="<html>";
+                    String pointsString = "<html>";
+                    String jokersString = "<html>";
                     for (Participant participant : participantArrayList) {
-                        pointsString+=participant.getPoints()+"<br>";
-                        jokersString+=participant.getNumberOfUsedJokers()+"<br>";
+                        pointsString += participant.getPoints() + "<br>";
+                        jokersString += participant.getNumberOfUsedJokers() + "<br>";
                     }
-                    pointsString+="</html>";
-                    jokersString+="</html>";
+                    pointsString += "</html>";
+                    jokersString += "</html>";
                     pointsD.setText(pointsString);
                     jokersD.setText(jokersString);
                 }

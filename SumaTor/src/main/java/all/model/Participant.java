@@ -1,14 +1,10 @@
 package all.model;
 
 public class Participant {
-    String name;
-    String surname;
-    double points;
-    int numberOfUsedJokers;
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String name;
+    private String surname;
+    private double points;
+    private int numberOfUsedJokers;
 
     public void setPoints(double points) {
         this.points = points;
@@ -32,7 +28,7 @@ public class Participant {
 
     public Participant(String name, String surname, double points, int numberOfUsedJokers) {
         this.name = name;
-        this.surname=surname;
+        this.surname = surname;
         this.points = points;
         this.numberOfUsedJokers = numberOfUsedJokers;
     }
