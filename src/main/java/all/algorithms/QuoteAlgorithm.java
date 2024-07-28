@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class QuoteAlgorithm {
 
-    public Quote chooseRandomQuote(){
+    public Quote chooseRandomQuote() {
         Download download = new Download();
         ArrayList<Quote> quoteArrayList = download.downloadQuotes();
 

@@ -29,27 +29,10 @@ public class Frame extends JFrame {
 
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Frame frame = new Frame();
-                    frame.setVisible(true);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     QuoteAlgorithm quoteAlgorithm = new QuoteAlgorithm();
     Quote randomQuote = quoteAlgorithm.chooseRandomQuote();
     Download download = new Download();
-    Add add = new Add();
+    LinksHandler add = new LinksHandler();
     ArrayList<Driver> driversArrayList = null;
     String fastestDriver = null;
     ArrayList<Link> links;
@@ -58,6 +41,7 @@ public class Frame extends JFrame {
 
     /**
      * Create the frame.
+     *
      * @throws IOException
      */
     public Frame() throws Exception {
@@ -97,7 +81,7 @@ public class Frame extends JFrame {
         gbc_imageLabel.gridy = 1;
         contentPane.add(imageLabel, gbc_imageLabel);
 
-        JLabel quote = new JLabel("Quote for today: "+randomQuote.textOfQuote);
+        JLabel quote = new JLabel("Quote for today: " + randomQuote.getTextOfQuote());
         GridBagConstraints gbc_quote = new GridBagConstraints();
         gbc_quote.insets = new Insets(0, 0, 5, 5);
         gbc_quote.gridx = 12;
@@ -125,17 +109,17 @@ public class Frame extends JFrame {
         gbc_lblNewLabel_2.gridy = 3;
         contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 
-        String nameString="<html>";
-        String pointsString="<html>";
-        String jokersString="<html>";
+        String nameString = "<html>";
+        String pointsString = "<html>";
+        String jokersString = "<html>";
         for (Participant participant : participantArrayList) {
-            nameString+=participant.getName()+"<br>";
-            pointsString+=participant.getPoints()+"<br>";
-            jokersString+=participant.getNumberOfUsedJokers()+"<br>";
+            nameString += participant.getName() + "<br>";
+            pointsString += participant.getPoints() + "<br>";
+            jokersString += participant.getNumberOfUsedJokers() + "<br>";
         }
-        nameString+="</html>";
-        pointsString+="</html>";
-        jokersString+="</html>";
+        nameString += "</html>";
+        pointsString += "</html>";
+        jokersString += "</html>";
 
         JLabel namesD = new JLabel(nameString);
         GridBagConstraints gbc_namesD = new GridBagConstraints();
@@ -176,12 +160,11 @@ public class Frame extends JFrame {
 
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm();
-
-                if(e.getSource()==confirm) {
-                    if(score.get(1).equals("QUALIFYING")){
-                        for (Participant p: participantArrayList) {
-                            if(p.getQualiBets()!=null) {
+                if (e.getSource() == confirm) {
+                    if (score.get(1).equals("QUALIFYING")) {
+                        for (Participant p : participantArrayList) {
+                            if (p.getQualiBets() != null) {
+                                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getQualiBets(), driversArrayList, p);
                                 links = add.add("2023_q.txt");
                                 String save = null;
 
@@ -197,14 +180,13 @@ public class Frame extends JFrame {
                                 } catch (IOException ex) {
                                     throw new RuntimeException(ex);
                                 }
-                                countPointsAlgorithm.countQuali(p.getQualiBets(), driversArrayList, p);
+                                countPointsAlgorithm.countPointsFromQualifying();
                             }
                         }
-                    }
-
-                    else if(score.get(1).equals("SPRINT SHOOTOUT")){
-                        for (Participant p: participantArrayList) {
-                            if(p.getSprintShootoutBets()!=null) {
+                    } else if (score.get(1).equals("SPRINT SHOOTOUT")) {
+                        for (Participant p : participantArrayList) {
+                            if (p.getSprintShootoutBets() != null) {
+                                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getSprintShootoutBets(), driversArrayList, p);
                                 links = add.add("2023_ss.txt");
                                 String save = null;
 
@@ -220,14 +202,13 @@ public class Frame extends JFrame {
                                 } catch (IOException ex) {
                                     throw new RuntimeException(ex);
                                 }
-                                countPointsAlgorithm.countSprintShootout(p.getSprintShootoutBets(), driversArrayList, p);
+                                countPointsAlgorithm.countPointsFromSprintShootout();
                             }
                         }
-                    }
-
-                    else if(score.get(1).equals("SPRINT")){
-                        for (Participant p: participantArrayList) {
-                            if(p.getSprintBets()!=null) {
+                    } else if (score.get(1).equals("SPRINT")) {
+                        for (Participant p : participantArrayList) {
+                            if (p.getSprintBets() != null) {
+                                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getSprintBets(), driversArrayList, p);
                                 links = add.add("2023_s.txt");
                                 String save = null;
 
@@ -242,14 +223,13 @@ public class Frame extends JFrame {
                                 } catch (IOException ex) {
                                     throw new RuntimeException(ex);
                                 }
-                                countPointsAlgorithm.countSprint(p.getSprintBets(), driversArrayList, p);
+                                countPointsAlgorithm.countPointsFromSprint();
                             }
                         }
-                    }
-
-                    else if(score.get(1).equals("RACE")){
-                        for (Participant p: participantArrayList) {
-                            if(p.getRaceBets()!=null) {
+                    } else if (score.get(1).equals("RACE")) {
+                        for (Participant p : participantArrayList) {
+                            if (p.getRaceBets() != null) {
+                                CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(p.getRaceBets(), driversArrayList, p, fastestDriver);
                                 links = add.add("2023_r.txt");
                                 linksFL = add.add("2023_fl.txt");
 
@@ -270,7 +250,7 @@ public class Frame extends JFrame {
                                     }
                                 }
 
-                                String fastestDriver=null;
+                                String fastestDriver = null;
 
                                 try {
                                     fastestDriver = download.downloadFastestLap(saveFL);
@@ -284,19 +264,19 @@ public class Frame extends JFrame {
                                     throw new RuntimeException(ex);
                                 }
 
-                                countPointsAlgorithm.countRace(p.getRaceBets(), driversArrayList, p, fastestDriver);
+                                countPointsAlgorithm.countPointsFromRace();
                             }
                         }
                     }
 
-                    String pointsString="<html>";
-                    String jokersString="<html>";
+                    String pointsString = "<html>";
+                    String jokersString = "<html>";
                     for (Participant participant : participantArrayList) {
-                        pointsString+=participant.getPoints()+"<br>";
-                        jokersString+=participant.getNumberOfUsedJokers()+"<br>";
+                        pointsString += participant.getPoints() + "<br>";
+                        jokersString += participant.getNumberOfUsedJokers() + "<br>";
                     }
-                    pointsString+="</html>";
-                    jokersString+="</html>";
+                    pointsString += "</html>";
+                    jokersString += "</html>";
                     pointsD.setText(pointsString);
                     jokersD.setText(jokersString);
 

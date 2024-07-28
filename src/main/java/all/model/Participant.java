@@ -1,14 +1,14 @@
 package all.model;
 
 public class Participant {
-    String name;
-    String surname;
-    double points;
-    int numberOfUsedJokers;
+    private String name;
+    private String surname;
+    private double points;
+    private int numberOfUsedJokers;
 
-    String sprintBets;
-    String sprintShootoutBets;
-    String qualiBets;
+    private String sprintBets;
+    private String sprintShootoutBets;
+    private String qualiBets;
 
     public String getSurname() {
         return surname;
@@ -30,11 +30,7 @@ public class Participant {
         return raceBets;
     }
 
-    String raceBets;
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+    private String raceBets;
 
     public void setSprintBets(String sprintBets) {
         this.sprintBets = sprintBets;
@@ -50,10 +46,6 @@ public class Participant {
 
     public void setRaceBets(String raceBets) {
         this.raceBets = raceBets;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setPoints(double points) {
