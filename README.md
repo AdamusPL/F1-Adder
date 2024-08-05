@@ -1,6 +1,8 @@
 # F1-Adder - version with downloading bets from e-mail*
 This app aims to calculate points from betting standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race) in Formula 1 (friendly) Betting League, it works on rules strictly defined by league
 
+![image](https://github.com/user-attachments/assets/9a954472-eb5a-47a2-8bd1-2653c2272285)
+
 # How does it work?
 1. Launch the application
 2. Press the "OK" button to download pending mails with bets from specific mail account, load URL addresses from official F1 page which store scores, load scores from desired session and count points for every participant
