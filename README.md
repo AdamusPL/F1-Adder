@@ -47,6 +47,9 @@ Points multiplier:
 # For Race, you have to bet fastest lap additionally, so under bets like above you have to write e.g.:
 NO: Verstappen
 
+# Joker
+Participant has also ability to use Joker in 3 non-Sprint racing weekends and 1 Sprint racing weekend over one season which doubles points received from every session in that weekend. In order to use it - participant has to write "(J)" under the bets like above
+
 # Topic of the mail
 It has to include country and name of the session, e.g.: "united-states QUALIFYING"
 
