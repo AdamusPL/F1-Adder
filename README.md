@@ -1,16 +1,16 @@
-# F1-Adder - version with downloading bets from e-mail*
-This app aims to calculate points from betting standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race) in Formula 1 (friendly) Betting League, it works on rules strictly defined by league
+# F1-Adder - version with downloading driver standings from an e-mail*
+This app aims to calculate points from predicting driver standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
 ![image](https://github.com/user-attachments/assets/9a954472-eb5a-47a2-8bd1-2653c2272285)
 
 # How does it work?
 1. Launch the application
-2. Press the "OK" button to download pending mails with bets from specific mail account, load URL addresses from official F1 page which store scores, load scores from desired session and count points for every participant
+2. Press the "OK" button to download pending mails with predictions from specific mail accounts, load URL addresses from official F1 page which store scores, load scores from desired session and count points for every participant
 3. Counted points will show up in "Points" column
 
 # How are points counted?
-- Precise bet: If participant guessed the exact position of driver, he/she receives 2 points
-- Bet missed by one position: If participant's bet differentiate by 1 position, he/she receives 1 point 
+- Precise prediction: If participant guessed the exact position of driver, he/she receives 2 points
+- Prediction missed by one position: If participant's prediction differentiate by 1 position, he/she receives 1 point 
 
 Additional points for podium:
 - First place: Additional 3 points for guessing exact driver on the first place
@@ -23,7 +23,7 @@ Points multiplier:
 - 0.5x - Sprint Shootout
 - 1x - Sprint/Qualifying
 - 2x - Race
-# Example of correct bets format for Sprint Shootout/Sprint/Qualifying:
+# Example of correct driver standings prediction format for Sprint Shootout/Sprint/Qualifying:
 1. Verstappen
 2. Hamilton
 3. Leclerc
@@ -44,11 +44,11 @@ Points multiplier:
 18. Sargeant
 19. Hulkenberg
 20. Magnussen
-# For Race, you have to bet fastest lap additionally, so under bets like above you have to write e.g.:
+# For Race, you have to predict fastest lap additionally, so under predictions like above you have to write e.g.:
 NO: Verstappen
 
 # Joker
-Participant has also ability to use Joker in 3 non-Sprint racing weekends and 1 Sprint racing weekend over one season which doubles points received from every session in that weekend. In order to use it - participant has to write "(J)" under the bets like above
+Participant has also ability to use Joker in 3 non-Sprint racing weekends and 1 Sprint racing weekend over one season which doubles points received from every session in that weekend. In order to use it - participant has to write "(J)" under the predictions like above
 
 # Topic of the mail
 It has to include country and name of the session, e.g.: "united-states QUALIFYING"
@@ -56,8 +56,8 @@ It has to include country and name of the session, e.g.: "united-states QUALIFYI
 It only reads mails from current participants of league
 
 # Which libraries does it use?
-- JSoup - to download scores from official F1 page and current betting ranking from strictly defined page
-- JavaX Mail - to download mails with bets from specific e-mail account
+- JSoup - to download scores from official F1 page and current participant standings ranking from strictly defined page
+- JavaX Mail - to download mails with predictions from specific e-mail accounts
 
 In order to make it work, you have to turn on 2Step Verification on your Google account and generate password for the app.
 Then, in code, you have to assign your email to user variable and generated password to password variable
