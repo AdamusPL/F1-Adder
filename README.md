@@ -1,5 +1,5 @@
 # F1-Adder - version with pasting bets manually*
-This app aims to calculate points from betting standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race) in Formula 1 (friendly) Betting League, it works on rules strictly defined by league
+This app aims to calculate points from predicting standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
 ![image](https://github.com/user-attachments/assets/d34a5f8f-b113-4ba5-8b3c-c7e91553e638)
 
