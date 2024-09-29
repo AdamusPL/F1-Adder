@@ -1,7 +1,7 @@
 # F1-Adder - version with downloading driver standings from an e-mail*
 This app aims to calculate points from predicting driver standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
-![image](https://github.com/user-attachments/assets/9a954472-eb5a-47a2-8bd1-2653c2272285)
+![image](https://github.com/user-attachments/assets/68008281-7d30-4edd-a47e-b5da438cc128)
 
 # How does it work?
 1. Launch the application
