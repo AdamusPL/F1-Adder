@@ -67,7 +67,7 @@ public class Frame extends JFrame {
         gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPane.setLayout(gbl_contentPane);
 
-        JLabel welcome = new JLabel("Welcome in programme which calculates points from driver standings in 2023 F1 season!");
+        JLabel welcome = new JLabel("Welcome in programme which calculates points from predicting driver standings in 2023 F1 season!");
         GridBagConstraints gbc_welcome = new GridBagConstraints();
         gbc_welcome.insets = new Insets(0, 0, 5, 5);
         gbc_welcome.gridx = 12;
