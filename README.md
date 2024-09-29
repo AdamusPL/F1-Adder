@@ -1,4 +1,6 @@
 # F1-Adder - version with pasting driver standings manually*
+*other versions of programme are available in different branches
+
 This app aims to calculate points from predicting driver standings in a particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
 ![image](https://github.com/user-attachments/assets/8bb734f5-953d-4557-87c2-cca2f9a5ef3d)
@@ -59,5 +61,3 @@ Participant has also ability to use Joker in 3 non-Sprint racing weekends and 1 
 # Which libraries does it use?
 - Selenium - to parse driver standings from official Formula 1 page
 - JSoup - to parse current participant standings from the specific page
-
-*other versions of programme are available in different branches
