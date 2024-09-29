@@ -5,7 +5,7 @@ This app aims to calculate points from predicting driver standings from particul
 
 # How does it work?
 1. Launch the application
-2. Press the "OK" button to download pending mails with predictions from specific mail accounts, load URL addresses from official F1 page which store scores, load scores from desired session and count points for every participant
+2. Press the "Update scores" button to download pending mails with predictions from specific mail accounts, load URL addresses from official F1 page which store scores, load scores from desired session and count points for every participant
 3. Counted points will show up in "Points" column
 
 # How are points counted?
