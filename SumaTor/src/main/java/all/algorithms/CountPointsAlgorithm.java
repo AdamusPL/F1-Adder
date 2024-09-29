@@ -78,8 +78,7 @@ public class CountPointsAlgorithm {
             return true;
         }
 
-        String[] parts2 = s.split(" "); //divide position and driver
-        parts2[0] = parts2[0].replace(".", "");
+        String[] parts2 = s.split("\\. "); //divide position and driver
         Bet bet = new Bet(Integer.parseInt(parts2[0]), parts2[1]);
         betsArray.add(bet); //add bet to arraylist
         return false;

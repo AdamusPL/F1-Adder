@@ -1,7 +1,6 @@
 package all;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -68,7 +67,7 @@ public class Frame extends JFrame {
         gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
         contentPane.setLayout(gbl_contentPane);
 
-        JLabel welcome = new JLabel("Welcome in programme which sums up bets in 2023 F1 season!");
+        JLabel welcome = new JLabel("Welcome in programme which calculates points from driver standings in 2023 F1 season!");
         GridBagConstraints gbc_welcome = new GridBagConstraints();
         gbc_welcome.insets = new Insets(0, 0, 5, 5);
         gbc_welcome.gridx = 12;
@@ -205,20 +204,15 @@ public class Frame extends JFrame {
         JButton load = new JButton("Load");
         load.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == load) {
-                    if (sessionChoice.getSelectedItem().equals("Qualifying")) {
-                        links = linksHandler.add("2023_q.txt");
-                    } else if (sessionChoice.getSelectedItem().equals("Race")) {
+                if (e.getSource() == load) { //Qualifying or Race
+                    if (sessionChoice.getSelectedItem().equals("Qualifying") || sessionChoice.getSelectedItem().equals("Race")) {
                         links = linksHandler.add("2023_r.txt");
-                        linksFL = linksHandler.add("2023_fl.txt");
-                    } else if (sessionChoice.getSelectedItem().equals("Sprint")) { //Sprint
+                    } else { //Sprint or Sprint Shootout
                         links = linksHandler.add("2023_s.txt");
-                    } else { //sprint shootout
-                        links = linksHandler.add("2023_ss.txt");
                     }
 
                     for (Link link : links) {
-                        grandPrix.add(link.getName());
+                        grandPrix.add(link.getGpName());
                         contentPane.revalidate();
                     }
                 }
@@ -231,7 +225,7 @@ public class Frame extends JFrame {
         gbc_load.gridy = 8;
         contentPane.add(load, gbc_load);
 
-        JLabel lblNewLabel_5 = new JLabel("© DiXXo v.1.0 BETA, 2023");
+        JLabel lblNewLabel_5 = new JLabel("© AdamusPL v.1.0, 2023");
         GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
         gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
         gbc_lblNewLabel_5.gridx = 12;
@@ -243,44 +237,26 @@ public class Frame extends JFrame {
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == confirm) {
-                    String grandPrixName = "";
+
+                    String url = "";
                     for (Link link : links) {
-                        if (link.getFullname().contains(grandPrix.getSelectedItem())) {
-                            grandPrixName = link.getFullname();
+                        if (link.getUrl().contains(grandPrix.getSelectedItem())) {
+                            url = link.getUrl();
                         }
                     }
-
-                    String fastestLap = "";
-
-                    int counter = 0;
-
-                    for (int i = 0; i < grandPrixName.length(); i++) {
-                        if (grandPrixName.charAt(i) == '.') {
-                            if (grandPrixName.charAt(i + 1) == 'h') {
-                                counter++;
-                            }
-                        }
-
-                        if (counter == 2) {
-                            break;
-                        }
-
-                        fastestLap += grandPrixName.charAt(i);
-
-                    }
-
-                    fastestLap += "/fastest-laps.html";
 
                     if (sessionChoice.getSelectedItem().equals("Race")) {
                         try {
-                            fastestDriver = download.downloadFastestLap(fastestLap);
+                            String fastestLapUrl = url + "/fastest-laps";
+                            fastestDriver = download.downloadFastestLap(fastestLapUrl);
                         } catch (IOException e2) {
                             // TODO Auto-generated catch block
                             e2.printStackTrace();
                         }
 
                         try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(grandPrixName);
+                            String raceUrl = url + "/race-result";
+                            driversArrayList = download.downloadScoresFromF1Page(raceUrl);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -295,12 +271,13 @@ public class Frame extends JFrame {
 
                         CountPointsAlgorithm countPointsAlgorithm = new CountPointsAlgorithm(bets, driversArrayList, chosen, fastestDriver);
                         countPointsAlgorithm.countPointsFromRace();
+
                     } else if (sessionChoice.getSelectedItem().equals("Qualifying")) {
                         try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(grandPrixName);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
+                            String qualifyingUrl = url + "/qualifying";
+                            driversArrayList = download.downloadScoresFromF1Page(qualifyingUrl);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
                         }
 
                         Participant chosen = null;
@@ -315,7 +292,8 @@ public class Frame extends JFrame {
 
                     } else if (sessionChoice.getSelectedItem().equals("Sprint")) { //Sprint
                         try {
-                            driversArrayList = download.downloadScoresFromRaceOrSprint(grandPrixName);
+                            String sprintUrl = url + "/sprint-results";
+                            driversArrayList = download.downloadScoresFromF1Page(sprintUrl);
                         } catch (IOException e1) {
                             // TODO Auto-generated catch block
                             e1.printStackTrace();
@@ -332,10 +310,10 @@ public class Frame extends JFrame {
                         countPointsAlgorithm.countPointsFromSprint();
                     } else { //Sprint Shootout
                         try {
-                            driversArrayList = download.downloadScoresFromQualiOrSS(grandPrixName);
-                        } catch (IOException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
+                            String sprintShootoutUrl = url + "/sprint-qualifying";
+                            driversArrayList = download.downloadScoresFromF1Page(sprintShootoutUrl);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
                         }
 
                         Participant chosen = null;

@@ -1,20 +1,19 @@
 package all.model;
 
 public class Link {
-    public String getFullname() {
-        return fullname;
+    public String getUrl() {
+        return url;
     }
 
-    private String fullname;
-    private String name;
-
-    public Link(String link, String fullname) {
-        this.name = link;
-        this.fullname = fullname;
+    public String getGpName(){
+        return gpName;
     }
 
-    public String getName() {
-        return name;
-    }
+    private String url;
+    private String gpName;
 
+    public Link(String gpName, String url) {
+        this.url = url;
+        this.gpName = gpName;
+    }
 }

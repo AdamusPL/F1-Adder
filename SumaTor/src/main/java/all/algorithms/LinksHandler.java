@@ -16,7 +16,6 @@ public class LinksHandler {
             BufferedReader br = new BufferedReader(new FileReader(filename));
 
             while ((line = br.readLine()) != null) {
-//                System.out.println(line);
                 String[] data = line.split("/");
                 Link link = new Link(data[8], line);
                 links.add(link);

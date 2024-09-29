@@ -57,6 +57,7 @@ NO: Verstappen
 Participant has also ability to use Joker in 3 non-Sprint racing weekends and 1 Sprint racing weekend over one season which doubles points received from every session in that weekend. In order to use it - participant has to write "(J)" under the predictions like above
 
 # Which libraries does it use?
-- JSoup - to download scores from official F1 page and current participant standings from the specific page
+- Selenium - to parse driver standings from official Formula 1 page
+- JSoup - to parse current participant standings from the specific page
 
 *other versions of programme are available in different branches
