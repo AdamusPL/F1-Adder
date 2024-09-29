@@ -4,39 +4,106 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ab2e4a-35c7-43f6-bee7-ae13fd37442c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/all/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.6.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/Frame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/Frame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/Frame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/Frame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/Frame$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/Frame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/algorithms/Add.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/algorithms/CountPointsAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/algorithms/CountPointsAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/algorithms/Download.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/algorithms/Download.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/model/Bet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/model/Bet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/model/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/model/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/model/Link.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/model/Link.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/model/Participant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/model/Participant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/all/model/Quote.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/all/model/Quote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/algorithms/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/algorithms/LinksHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/algorithms/CountPointsAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/algorithms/CountPointsAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/algorithms/Download.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/algorithms/Download.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/algorithms/QuoteAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/algorithms/QuoteAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/Bet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/Bet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/Link.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/Participant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/all/model/Quote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/all/model/Quote.java" afterDir="false" />
+    <list default="true" id="cdb20c30-5bde-4155-bac5-00ba0e6ffe65" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/6.6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.2/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/7.4/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/configuration-cache/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2022_q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2022_r.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2022_s.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2023_fl.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2023_q.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2023_r.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2023_s.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2023_ss.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jsoup_jsoup_1_15_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/SumaTorJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/SumaTorJava.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/SumaTorJava.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/Frame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/algorithms/CountPointsAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/algorithms/Download.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/algorithms/LinksHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/algorithms/QuoteAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/algorithms/ReceiveMail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/model/Bet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/model/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/model/Link.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/model/Participant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/java/main/all/model/Quote.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/libs/SumaTor.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/libs/SumaTorJava-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/Frame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/algorithms/CountPointsAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/algorithms/Download.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/algorithms/LinksHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/algorithms/QuoteAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/algorithms/ReceiveMail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/model/Bet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/model/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/model/Link.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/model/Participant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/all/model/Quote.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,37 +115,14 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="SumaTorJava" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2jsBaxpRpouHyX8e08F11GhgiB2" />
+  <component name="ProjectId" id="2ml9DBv2LPpLXPwVoua2oeMTinC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -89,19 +133,18 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/adamc/Documents/GitHub/SumaTor"
+    "last_opened_file_path": "C:/Users/adamc/Documents/GitHub/F1-Adder/SumaTor"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="70ab2e4a-35c7-43f6-bee7-ae13fd37442c" name="Changes" comment="" />
-      <created>1722165977250</created>
+      <changelist id="cdb20c30-5bde-4155-bac5-00ba0e6ffe65" name="Changes" comment="" />
+      <created>1727640173842</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1722165977250</updated>
-      <workItem from="1722165979257" duration="5766000" />
+      <updated>1727640173842</updated>
+      <workItem from="1727640175123" duration="6721000" />
     </task>
     <servers />
   </component>
@@ -118,5 +161,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/all/algorithms/ReceiveMail.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

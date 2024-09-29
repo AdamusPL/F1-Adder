@@ -56,7 +56,8 @@ It has to include country and name of the session, e.g.: "united-states QUALIFYI
 It only reads mails from current participants of league
 
 # Which libraries does it use?
-- JSoup - to download scores from official F1 page and current participant standings ranking from strictly defined page
+- Selenium - to parse driver standings from official Formula 1 page
+- JSoup - to parse current participant standings from strictly defined page
 - JavaX Mail - to download mails with predictions from specific e-mail accounts
 
 In order to make it work, you have to turn on 2Step Verification on your Google account and generate password for the app.
