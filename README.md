@@ -1,7 +1,7 @@
 # F1-Adder - version with pasting driver standings manually*
 This app aims to calculate points from predicting driver standings in a particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
-![image](https://github.com/user-attachments/assets/d34a5f8f-b113-4ba5-8b3c-c7e91553e638)
+![image](https://github.com/user-attachments/assets/8a69c663-f0bb-4413-8a3e-39ae18df519d)
 
 # How does it work?
 1. On the right, choose from which session ("Sprint Shootout", "Sprint", "Quali" or "Race") programme should count points
