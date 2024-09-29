@@ -1,4 +1,6 @@
 # F1-Adder - version with downloading driver standings from an e-mail*
+*other versions of programme are available in different branches
+
 This app aims to calculate points from predicting driver standings from particular Formula 1 session (Sprint/Sprint Shootout/Qualifying/Race)
 
 ![image](https://github.com/user-attachments/assets/68008281-7d30-4edd-a47e-b5da438cc128)
@@ -62,5 +64,3 @@ It only reads mails from current participants of league
 
 In order to make it work, you have to turn on 2Step Verification on your Google account and generate password for the app.
 Then, in code, you have to assign your email to user variable and generated password to password variable
-
-*other versions of programme are available in different branches
