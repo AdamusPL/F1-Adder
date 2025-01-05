@@ -75,7 +75,12 @@ public class Download {
         try {
             WebDriver driver;
             System.setProperty("webdriver.firefox.marionette","C:\\apps\\geckodriver.exe");
-            driver = new FirefoxDriver();
+
+            // Create an instance of FirefoxOptions
+            FirefoxOptions options = new FirefoxOptions();
+            options.setHeadless(true); // Enable headless mode
+
+            driver = new FirefoxDriver(options);
             String baseUrl = link;
 
             driver.get(baseUrl);
